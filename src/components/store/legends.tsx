@@ -52,6 +52,7 @@ const legends: Legend[] = [
     era: "1999 — 2010",
     image: "/images/legend-benjani.png",
     sport: "football",
+    realPhoto: true,
     highlights: [
       "First Zimbabwean to score in the UEFA Champions League",
       "Played for Auxerre, Portsmouth, Manchester City",
@@ -67,6 +68,7 @@ const legends: Legend[] = [
     era: "1981 — 1994",
     image: "/images/legend-bruce-grobbelaar.png",
     sport: "football",
+    realPhoto: true,
     highlights: [
       "628 appearances for Liverpool FC (1981–1994)",
       "6 League titles + 1 European Cup (1984)",
@@ -82,6 +84,7 @@ const legends: Legend[] = [
     era: "1992 — 2003",
     image: "/images/legend-andy-flower.png",
     sport: "cricket",
+    realPhoto: true,
     highlights: [
       "63 Tests, 213 ODIs — over 11,500 international runs",
       "Holds Zimbabwe records: most Test runs, highest Test average",
@@ -97,6 +100,7 @@ const legends: Legend[] = [
     era: "1993 — 2005",
     image: "/images/legend-heath-streak.png",
     sport: "cricket",
+    realPhoto: true,
     highlights: [
       "216 Test wickets in 65 matches — Zimbabwe's greatest",
       "Only Zimbabwean with 100+ Test wickets",
@@ -112,6 +116,7 @@ const legends: Legend[] = [
     era: "1992 — 2010",
     image: "/images/legend-grant-flower.png",
     sport: "cricket",
+    realPhoto: true,
     highlights: [
       "67 Tests and 221 ODIs for Zimbabwe",
       "Most successful opening batsman in Zimbabwe's history",
@@ -216,9 +221,9 @@ export default function Legends() {
           </div>
         </div>
 
-        {/* Note about AI portraits */}
+        {/* Note about photos */}
         <p className="mt-12 text-center text-[#999] text-[10px] tracking-[0.2em] font-ui uppercase">
-          Tendai Mtawarira card uses a real photograph (Wikimedia Commons) · Other portraits are AI-generated artistic representations · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
+          6 of 8 legend cards use real photographs from Wikimedia Commons · Peter Ndlovu &amp; Moses Chunga use AI-generated artistic representations (no freely-licensed photos available) · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
         </p>
       </div>
     </section>
