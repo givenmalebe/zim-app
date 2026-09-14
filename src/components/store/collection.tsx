@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import { Icons } from "@/lib/icons";
-import { products, type Product } from "@/lib/products";
+import { products, eraFilters, type Product } from "@/lib/products";
 
 type Props = {
   onAddToCart: (p: Product) => void;
 };
 
-const filters = ["ALL", "1980s", "1990s", "2000s", "SIGNATURE", "LIMITED"];
-
 export default function Collection({ onAddToCart }: Props) {
-  const [active, setActive] = useState("ALL");
+  const [active, setActive] = useState<(typeof eraFilters)[number]>("ALL");
+
+  const filtered =
+    active === "ALL"
+      ? products
+      : products.filter((p) => p.era === active);
 
   return (
     <section id="collection" className="relative bg-[#FAF9F6] py-20 md:py-28">
@@ -32,33 +35,49 @@ export default function Collection({ onAddToCart }: Props) {
               WEAR THE LEGACY
             </h2>
             <p className="mt-5 max-w-md text-[#555] text-[15px] leading-[1.7] font-body">
-              Every jersey in our collection is cut, stitched and finished to
-              honour the moments that defined a nation. Pick your era. Pick your
-              story.
+              Authentic Zimbabwe throwback jerseys, era by era. From the
+              Independence-era cotton kits of the 1980s, through the bold 90s
+              sublimations, to the technical 2000s cuts — plus our premium
+              Signature and numbered Limited editions.
             </p>
           </div>
+        </div>
 
-          {/* Filters */}
-          <div className="flex flex-wrap items-center gap-2">
-            {filters.map((f) => (
+        {/* Era filter chips */}
+        <div className="flex flex-wrap items-center gap-2 mb-10">
+          {eraFilters.map((era) => {
+            const count =
+              era === "ALL"
+                ? products.length
+                : products.filter((p) => p.era === era).length;
+            return (
               <button
-                key={f}
-                onClick={() => setActive(f)}
-                className={`px-4 py-2 text-[10px] tracking-[0.2em] font-ui uppercase border transition-all duration-300 ${
-                  active === f
+                key={era}
+                onClick={() => setActive(era)}
+                className={`px-4 py-2 text-[10px] tracking-[0.2em] font-ui uppercase border transition-all duration-300 flex items-center gap-2 ${
+                  active === era
                     ? "bg-[#0D0D0D] text-white border-[#0D0D0D]"
                     : "bg-transparent text-[#0D0D0D] border-[#0D0D0D]/20 hover:border-[#0D0D0D]"
                 }`}
               >
-                {f}
+                {era}
+                <span
+                  className={`text-[9px] px-1.5 py-0.5 rounded-sm ${
+                    active === era
+                      ? "bg-white/20 text-white"
+                      : "bg-[#0D0D0D]/10 text-[#0D0D0D]/60"
+                  }`}
+                >
+                  {count}
+                </span>
               </button>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
         {/* Product grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
+          {filtered.map((p) => (
             <ProductCard key={p.id} product={p} onAdd={onAddToCart} />
           ))}
         </div>
@@ -92,6 +111,14 @@ function ProductCard({
     setTimeout(() => setAdded(false), 1400);
   };
 
+  // Era badge color
+  const eraColor =
+    product.era === "SIGNATURE"
+      ? "bg-[#0D0D0D] text-[#D4AF37]"
+      : product.era === "LIMITED"
+      ? "bg-[#BF211E] text-white"
+      : "bg-[#0D0D0D] text-white";
+
   return (
     <article className="group relative bg-white border border-black/[0.06] hover:border-[#D4AF37] transition-all duration-300 lift overflow-hidden">
       {/* Image */}
@@ -101,11 +128,21 @@ function ProductCard({
           alt={`${product.name} — ${product.edition} throwback jersey in ${product.colorway}`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
+
+        {/* Era badge (top-left) */}
+        <span
+          className={`absolute top-3 left-3 px-3 py-1.5 text-[9px] tracking-[0.25em] font-ui uppercase font-semibold ${eraColor}`}
+        >
+          {product.era}
+        </span>
+
+        {/* Product badge (top-right) */}
         {product.badge && (
-          <span className="absolute top-3 left-3 bg-[#0D0D0D] text-[#D4AF37] text-[9px] tracking-[0.25em] font-ui uppercase px-3 py-1.5">
+          <span className="absolute top-3 right-3 px-2.5 py-1 bg-[#D4AF37] text-[#0D0D0D] text-[9px] tracking-[0.25em] font-ui uppercase font-semibold">
             {product.badge}
           </span>
         )}
+
         <button
           aria-label="Quick add"
           onClick={handle}
