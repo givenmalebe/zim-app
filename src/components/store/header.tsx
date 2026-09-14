@@ -7,13 +7,25 @@ import { navItems } from "@/lib/products";
 export default function Header({
   cartCount,
   onCartClick,
+  onNavClick,
 }: {
   cartCount: number;
   onCartClick: () => void;
+  onNavClick: (item: string) => void;
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [active, setActive] = useState("HOME");
+
+  const handleNav = (item: string) => {
+    setActive(item);
+    setMobileOpen(false);
+    if (item === "HOME") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      onNavClick(item);
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -60,7 +72,7 @@ export default function Header({
             {navItems.map((item) => (
               <button
                 key={item}
-                onClick={() => setActive(item)}
+                onClick={() => handleNav(item)}
                 className={`text-[11px] tracking-[0.18em] font-ui uppercase transition-all relative py-1 ${
                   active === item
                     ? "text-[#D4AF37]"
@@ -132,10 +144,7 @@ export default function Header({
               {navItems.map((item) => (
                 <button
                   key={item}
-                  onClick={() => {
-                    setActive(item);
-                    setMobileOpen(false);
-                  }}
+                  onClick={() => handleNav(item)}
                   className={`text-left text-sm tracking-[0.18em] font-ui uppercase py-3 border-b border-white/5 ${
                     active === item ? "text-[#D4AF37]" : "text-white/85"
                   }`}

@@ -14,13 +14,31 @@ import Newsletter from "@/components/store/newsletter";
 import Footer from "@/components/store/footer";
 import CartDrawer, { type CartItem } from "@/components/store/cart-drawer";
 import CatalogModal from "@/components/store/catalog-modal";
+import PageModal from "@/components/store/page-modal";
+import OurStoryPage from "@/components/store/pages/our-story-page";
+import ImpactPage from "@/components/store/pages/impact-page";
+import JournalPage from "@/components/store/pages/journal-page";
+import ContactPage from "@/components/store/pages/contact-page";
+import LegendsPage from "@/components/store/pages/legends-page";
 import type { Product } from "@/lib/products";
 import { useToast } from "@/hooks/use-toast";
+
+type PageKey = "OUR STORY" | "COLLECTIONS" | "LEGENDS" | "IMPACT" | "JOURNAL" | "CONTACT" | null;
+
+const pageMeta: Record<Exclude<PageKey, null>, { eyebrow: string; title: string }> = {
+  "OUR STORY": { eyebrow: "About the brand", title: "Our Story" },
+  "COLLECTIONS": { eyebrow: "Full catalog", title: "All Jerseys" },
+  "LEGENDS": { eyebrow: "Hall of fame", title: "The Legends" },
+  "IMPACT": { eyebrow: "Grassroots & community", title: "Our Impact" },
+  "JOURNAL": { eyebrow: "Stories from the pitch", title: "The Journal" },
+  "CONTACT": { eyebrow: "Get in touch", title: "Contact Us" },
+};
 
 export default function Home() {
   const [items, setItems] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [catalogOpen, setCatalogOpen] = useState(false);
+  const [pageOpen, setPageOpen] = useState<PageKey>(null);
   const { toast } = useToast();
 
   const cartCount = items.reduce((s, i) => s + i.qty, 0);
@@ -62,9 +80,40 @@ export default function Home() {
     setItems((prev) => prev.filter((i) => i.id !== id));
   }, []);
 
+  const handleNav = useCallback((item: string) => {
+    if (item === "COLLECTIONS") {
+      setCatalogOpen(true);
+    } else {
+      setPageOpen(item as PageKey);
+    }
+  }, []);
+
+  // Render the appropriate page content inside the page modal
+  const renderPage = () => {
+    if (!pageOpen) return null;
+    switch (pageOpen) {
+      case "OUR STORY":
+        return <OurStoryPage />;
+      case "LEGENDS":
+        return <LegendsPage />;
+      case "IMPACT":
+        return <ImpactPage />;
+      case "JOURNAL":
+        return <JournalPage />;
+      case "CONTACT":
+        return <ContactPage />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#0D0D0D]">
-      <Header cartCount={cartCount} onCartClick={() => setCartOpen(true)} />
+      <Header
+        cartCount={cartCount}
+        onCartClick={() => setCartOpen(true)}
+        onNavClick={handleNav}
+      />
 
       <main className="flex-1">
         <Hero />
@@ -97,6 +146,16 @@ export default function Home() {
         onClose={() => setCatalogOpen(false)}
         onAddToCart={handleAdd}
       />
+
+      {/* Page modal for nav items (Our Story, Legends, Impact, Journal, Contact) */}
+      <PageModal
+        open={pageOpen !== null && pageOpen !== "COLLECTIONS"}
+        onClose={() => setPageOpen(null)}
+        eyebrow={pageOpen && pageOpen !== "COLLECTIONS" ? pageMeta[pageOpen].eyebrow : ""}
+        title={pageOpen && pageOpen !== "COLLECTIONS" ? pageMeta[pageOpen].title : ""}
+      >
+        {renderPage()}
+      </PageModal>
 
       {/* Floating cart trigger (mobile only - desktop uses header cart icon) */}
       <button
