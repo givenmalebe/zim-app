@@ -8,7 +8,7 @@ type Legend = {
   quote: string;
   era: string;
   image: string;
-  sport: "football" | "cricket";
+  sport: "football" | "cricket" | "rugby";
   highlights: string[];
 };
 
@@ -59,6 +59,21 @@ const legends: Legend[] = [
     ],
   },
   {
+    name: "Bruce Grobbelaar",
+    role: "Goalkeeper · Liverpool Legend · Zimbabwe International",
+    quote:
+      "I was the kid from Bulawayo who walked out at Anfield. Anything is possible if you keep diving.",
+    era: "1981 — 1994",
+    image: "/images/legend-bruce-grobbelaar.png",
+    sport: "football",
+    highlights: [
+      "628 appearances for Liverpool FC (1981–1994)",
+      "6 League titles + 1 European Cup (1984)",
+      "Famous 'wobbly legs' penalty saves in 1984 European Cup final",
+      "Born in Durban, raised in Zimbabwe — Warriors international",
+    ],
+  },
+  {
     name: "Andy Flower",
     role: "Wicketkeeper-Batsman · Zimbabwe Captain",
     quote:
@@ -103,11 +118,34 @@ const legends: Legend[] = [
       "Averaged over 40 against Australia — a rare feat",
     ],
   },
+  {
+    name: "Tendai 'Beast' Mtawarira",
+    role: "Loosehead Prop · Springbok Legend · Born in Harare",
+    quote:
+      "I carry Zimbabwe in my name and the world in my stride. The Beast never sleeps.",
+    era: "2008 — 2019",
+    image: "/images/legend-tendai-mtawarira.png",
+    sport: "rugby",
+    highlights: [
+      "117 caps for South Africa Springboks — most capped prop",
+      "2019 Rugby World Cup winner (vs England, final)",
+      "Debuted 14 June 2008 vs Wales at Loftus Versfeld",
+      "Born in Harare, Zimbabwe — 16 Test tries across 11 seasons",
+    ],
+  },
 ];
 
 export default function Legends() {
   const footballers = legends.filter((l) => l.sport === "football");
   const cricketers = legends.filter((l) => l.sport === "cricket");
+  const rugbyPlayers = legends.filter((l) => l.sport === "rugby");
+  // Running index across all sports so numbers stay unique (01–08)
+  let runningIndex = 0;
+  const footballStart = runningIndex;
+  runningIndex += footballers.length;
+  const cricketStart = runningIndex;
+  runningIndex += cricketers.length;
+  const rugbyStart = runningIndex;
 
   return (
     <section
@@ -149,26 +187,36 @@ export default function Legends() {
             label="Football"
             sub="The Beautiful Game · The Warriors"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {footballers.map((l, i) => (
-              <LegendCard key={l.name} legend={l} index={i} />
+              <LegendCard key={l.name} legend={l} index={footballStart + i} />
             ))}
           </div>
         </div>
 
         {/* Cricket legends */}
-        <div>
+        <div className="mb-12">
           <SportHeader label="Cricket" sub="The Chevrons · A Cricketing Nation" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {cricketers.map((l, i) => (
-              <LegendCard key={l.name} legend={l} index={i + 3} />
+              <LegendCard key={l.name} legend={l} index={cricketStart + i} />
+            ))}
+          </div>
+        </div>
+
+        {/* Rugby legends */}
+        <div>
+          <SportHeader label="Rugby" sub="The Sables · Born to Scrummage" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {rugbyPlayers.map((l, i) => (
+              <LegendCard key={l.name} legend={l} index={rugbyStart + i} />
             ))}
           </div>
         </div>
 
         {/* Note about AI portraits */}
         <p className="mt-12 text-center text-[#999] text-[10px] tracking-[0.2em] font-ui uppercase">
-          Portraits are AI-generated artistic representations · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Transfermarkt &amp; Pindula
+          Portraits are AI-generated artistic representations · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
         </p>
       </div>
     </section>
