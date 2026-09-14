@@ -7,6 +7,8 @@ export type Product = {
   colorway: string;
   badge?: string;
   era: "1980s" | "1990s" | "2000s" | "SIGNATURE" | "LIMITED";
+  sport: "Football" | "Cricket" | "Rugby";
+  team: string;
 };
 
 export const products: Product[] = [
@@ -18,6 +20,8 @@ export const products: Product[] = [
     image: "/images/product-jersey-1980-1.png",
     colorway: "Heritage White",
     era: "1980s",
+    sport: "Football",
+    team: "Warriors (ZIFA)",
   },
   {
     id: "p2",
@@ -27,6 +31,8 @@ export const products: Product[] = [
     image: "/images/product-jersey-1985-1.png",
     colorway: "Forest Green",
     era: "1980s",
+    sport: "Football",
+    team: "Warriors (ZIFA)",
   },
   {
     id: "p3",
@@ -36,6 +42,8 @@ export const products: Product[] = [
     image: "/images/product-jersey-1990-1.png",
     colorway: "Marigold",
     era: "1990s",
+    sport: "Football",
+    team: "Warriors (ZIFA)",
   },
   {
     id: "p4",
@@ -45,24 +53,30 @@ export const products: Product[] = [
     image: "/images/product-jersey-1992-1.png",
     colorway: "Carbon Black",
     era: "1990s",
+    sport: "Football",
+    team: "Warriors (ZIFA)",
   },
   {
     id: "p5",
     name: "Millennium 2002",
-    edition: "2002 Home Kit",
+    edition: "2002 ODI Kit",
     price: 88,
     image: "/images/product-jersey-2002-1.png",
     colorway: "Crimson Red",
     era: "2000s",
+    sport: "Cricket",
+    team: "Chevrons (ZC)",
   },
   {
     id: "p6",
     name: "Dynasty 2004",
-    edition: "2004 Away Kit",
+    edition: "2004 ODI Kit",
     price: 90,
     image: "/images/product-jersey-2004-1.png",
     colorway: "Deep Navy",
     era: "2000s",
+    sport: "Cricket",
+    team: "Chevrons (ZC)",
   },
   {
     id: "p7",
@@ -73,6 +87,8 @@ export const products: Product[] = [
     colorway: "Heritage Cream",
     badge: "Signature",
     era: "SIGNATURE",
+    sport: "Rugby",
+    team: "Sables (ZRU)",
   },
   {
     id: "p8",
@@ -83,10 +99,13 @@ export const products: Product[] = [
     colorway: "Vintage Maroon",
     badge: "Limited",
     era: "LIMITED",
+    sport: "Cricket",
+    team: "Chevrons (ZC)",
   },
 ];
 
 export const eraFilters = ["ALL", "1980s", "1990s", "2000s", "SIGNATURE", "LIMITED"] as const;
+export const sportFilters = ["ALL", "Football", "Cricket", "Rugby"] as const;
 
 export const lifestyleImages = [
   {

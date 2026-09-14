@@ -2,25 +2,27 @@
 
 import { useState } from "react";
 import { Icons } from "@/lib/icons";
-import { products, eraFilters, type Product } from "@/lib/products";
+import { products, eraFilters, sportFilters, type Product } from "@/lib/products";
 
 type Props = {
   onAddToCart: (p: Product) => void;
 };
 
 export default function Collection({ onAddToCart }: Props) {
-  const [active, setActive] = useState<(typeof eraFilters)[number]>("ALL");
+  const [activeEra, setActiveEra] = useState<(typeof eraFilters)[number]>("ALL");
+  const [activeSport, setActiveSport] = useState<(typeof sportFilters)[number]>("ALL");
 
-  const filtered =
-    active === "ALL"
-      ? products
-      : products.filter((p) => p.era === active);
+  const filtered = products.filter((p) => {
+    const eraOk = activeEra === "ALL" || p.era === activeEra;
+    const sportOk = activeSport === "ALL" || p.sport === activeSport;
+    return eraOk && sportOk;
+  });
 
   return (
     <section id="collection" className="relative bg-[#FAF9F6] py-20 md:py-28">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
         {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10">
           <div>
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-[#D4AF37]" />
@@ -35,35 +37,38 @@ export default function Collection({ onAddToCart }: Props) {
               WEAR THE LEGACY
             </h2>
             <p className="mt-5 max-w-md text-[#555] text-[15px] leading-[1.7] font-body">
-              Authentic Zimbabwe throwback jerseys, era by era. From the
-              Independence-era cotton kits of the 1980s, through the bold 90s
-              sublimations, to the technical 2000s cuts — plus our premium
-              Signature and numbered Limited editions.
+              Authentic Zimbabwe throwback jerseys across three codes — Warriors
+              football, Chevrons cricket and Sables rugby. Each jersey carries
+              its original team crest: the ZIFA Zimbabwe Bird, the Zimbabwe
+              Cricket lion, or the Sables antelope.
             </p>
           </div>
         </div>
 
-        {/* Era filter chips */}
-        <div className="flex flex-wrap items-center gap-2 mb-10">
-          {eraFilters.map((era) => {
+        {/* Sport filter chips */}
+        <div className="mb-3 flex flex-wrap items-center gap-2">
+          <span className="text-[9px] tracking-[0.3em] text-[#0D0D0D]/50 font-ui uppercase mr-2">
+            Sport:
+          </span>
+          {sportFilters.map((sport) => {
             const count =
-              era === "ALL"
+              sport === "ALL"
                 ? products.length
-                : products.filter((p) => p.era === era).length;
+                : products.filter((p) => p.sport === sport).length;
             return (
               <button
-                key={era}
-                onClick={() => setActive(era)}
+                key={sport}
+                onClick={() => setActiveSport(sport)}
                 className={`px-4 py-2 text-[10px] tracking-[0.2em] font-ui uppercase border transition-all duration-300 flex items-center gap-2 ${
-                  active === era
-                    ? "bg-[#0D0D0D] text-white border-[#0D0D0D]"
+                  activeSport === sport
+                    ? "bg-[#319E49] text-white border-[#319E49]"
                     : "bg-transparent text-[#0D0D0D] border-[#0D0D0D]/20 hover:border-[#0D0D0D]"
                 }`}
               >
-                {era}
+                {sport}
                 <span
                   className={`text-[9px] px-1.5 py-0.5 rounded-sm ${
-                    active === era
+                    activeSport === sport
                       ? "bg-white/20 text-white"
                       : "bg-[#0D0D0D]/10 text-[#0D0D0D]/60"
                   }`}
@@ -75,12 +80,60 @@ export default function Collection({ onAddToCart }: Props) {
           })}
         </div>
 
-        {/* Product grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filtered.map((p) => (
-            <ProductCard key={p.id} product={p} onAdd={onAddToCart} />
-          ))}
+        {/* Era filter chips */}
+        <div className="mb-10 flex flex-wrap items-center gap-2">
+          <span className="text-[9px] tracking-[0.3em] text-[#0D0D0D]/50 font-ui uppercase mr-2">
+            Era:
+          </span>
+          {eraFilters.map((era) => {
+            const count =
+              era === "ALL"
+                ? products.length
+                : products.filter((p) => p.era === era).length;
+            return (
+              <button
+                key={era}
+                onClick={() => setActiveEra(era)}
+                className={`px-4 py-2 text-[10px] tracking-[0.2em] font-ui uppercase border transition-all duration-300 flex items-center gap-2 ${
+                  activeEra === era
+                    ? "bg-[#0D0D0D] text-white border-[#0D0D0D]"
+                    : "bg-transparent text-[#0D0D0D] border-[#0D0D0D]/20 hover:border-[#0D0D0D]"
+                }`}
+              >
+                {era}
+                <span
+                  className={`text-[9px] px-1.5 py-0.5 rounded-sm ${
+                    activeEra === era
+                      ? "bg-white/20 text-white"
+                      : "bg-[#0D0D0D]/10 text-[#0D0D0D]/60"
+                  }`}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
+
+        {/* Result count */}
+        <div className="mb-6 text-[10px] tracking-[0.25em] text-[#0D0D0D]/50 font-ui uppercase">
+          Showing {filtered.length} of {products.length} jerseys
+        </div>
+
+        {/* Product grid */}
+        {filtered.length === 0 ? (
+          <div className="text-center py-20">
+            <p className="text-[#999] text-sm font-body">
+              No jerseys match your filters. Try a different combination.
+            </p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filtered.map((p) => (
+              <ProductCard key={p.id} product={p} onAdd={onAddToCart} />
+            ))}
+          </div>
+        )}
 
         {/* View all */}
         <div className="mt-14 text-center">
@@ -111,13 +164,21 @@ function ProductCard({
     setTimeout(() => setAdded(false), 1400);
   };
 
+  // Sport badge color
+  const sportColor =
+    product.sport === "Football"
+      ? "bg-[#319E49] text-white"
+      : product.sport === "Cricket"
+      ? "bg-[#BF211E] text-white"
+      : "bg-[#0D0D0D] text-[#D4AF37]";
+
   // Era badge color
   const eraColor =
     product.era === "SIGNATURE"
       ? "bg-[#0D0D0D] text-[#D4AF37]"
       : product.era === "LIMITED"
-      ? "bg-[#BF211E] text-white"
-      : "bg-[#0D0D0D] text-white";
+      ? "bg-[#D4AF37] text-[#0D0D0D]"
+      : "bg-white/90 text-[#0D0D0D]";
 
   return (
     <article className="group relative bg-white border border-black/[0.06] hover:border-[#D4AF37] transition-all duration-300 lift overflow-hidden">
@@ -125,20 +186,27 @@ function ProductCard({
       <div className="relative aspect-square bg-[#F5F2EC] overflow-hidden">
         <img
           src={product.image}
-          alt={`${product.name} — ${product.edition} throwback jersey in ${product.colorway}`}
+          alt={`${product.name} — ${product.edition} ${product.sport} jersey in ${product.colorway} with ${product.team} crest`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
-        {/* Era badge (top-left) */}
+        {/* Sport badge (top-left) */}
         <span
-          className={`absolute top-3 left-3 px-3 py-1.5 text-[9px] tracking-[0.25em] font-ui uppercase font-semibold ${eraColor}`}
+          className={`absolute top-3 left-3 px-3 py-1.5 text-[9px] tracking-[0.25em] font-ui uppercase font-semibold ${sportColor}`}
+        >
+          {product.sport}
+        </span>
+
+        {/* Era badge (top-right) */}
+        <span
+          className={`absolute top-3 right-3 px-2.5 py-1 text-[9px] tracking-[0.25em] font-ui uppercase font-semibold ${eraColor}`}
         >
           {product.era}
         </span>
 
-        {/* Product badge (top-right) */}
+        {/* Product badge (signature/limited) */}
         {product.badge && (
-          <span className="absolute top-3 right-3 px-2.5 py-1 bg-[#D4AF37] text-[#0D0D0D] text-[9px] tracking-[0.25em] font-ui uppercase font-semibold">
+          <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#0D0D0D]/80 backdrop-blur text-[#D4AF37] text-[9px] tracking-[0.25em] font-ui uppercase font-semibold border border-[#D4AF37]/40">
             {product.badge}
           </span>
         )}
@@ -169,6 +237,9 @@ function ProductCard({
         </h3>
         <p className="mt-1 text-xs text-[#777] font-ui tracking-[0.1em] uppercase">
           {product.colorway}
+        </p>
+        <p className="mt-1 text-[10px] text-[#319E49] font-ui tracking-[0.2em] uppercase font-semibold">
+          {product.team}
         </p>
 
         <div className="mt-4 flex items-center justify-between">
