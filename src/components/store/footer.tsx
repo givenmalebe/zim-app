@@ -37,14 +37,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
-            <span
-              className="font-script text-[#D4AF37] text-3xl"
-              style={{ fontFamily: "var(--font-pacifico), Pacifico, cursive" }}
-            >
-              Throwback Jersey
-            </span>
-            <p className="mt-5 text-white/55 text-sm leading-[1.7] font-body max-w-xs">
-              Heritage jerseys stitched from Zimbabwe&apos;s proudest football
+            <img
+              src="/images/logo-transparent.png"
+              alt="Throwback Jersey logo"
+              className="h-20 w-auto object-contain mb-5"
+            />
+            <p className="mt-1 text-white/55 text-sm leading-[1.7] font-body max-w-xs">
+              Heritage jerseys stitched from Zimbabwe&apos;s proudest sporting
               moments. Wear the legacy — pass it on.
             </p>
 

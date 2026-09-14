@@ -32,18 +32,20 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Throwback Jersey — Wear The Legacy",
   description:
-    "Throwback Jersey brings Zimbabwe's unforgettable football moments back to life — so you can wear the legacy. Heritage jerseys rooted in passion, unity and pride.",
+    "Throwback Jersey brings Zimbabwe's unforgettable sporting moments back to life — so you can wear the legacy. Heritage jerseys rooted in passion, unity and pride.",
   keywords: [
     "Throwback Jersey",
     "Zimbabwe",
-    "football",
+    "sport",
     "retro jersey",
     "heritage",
     "Wear the Legacy",
   ],
   authors: [{ name: "Throwback Jersey" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/images/logo-transparent.png",
+    shortcut: "/images/logo-transparent.png",
+    apple: "/images/logo-transparent.png",
   },
   openGraph: {
     title: "Throwback Jersey — Wear The Legacy",
@@ -51,6 +53,7 @@ export const metadata: Metadata = {
       "More than a jersey. It's our story. Zimbabwe's sporting heritage, reborn.",
     siteName: "Throwback Jersey",
     type: "website",
+    images: ["/images/logo-transparent.png"],
   },
 };
 

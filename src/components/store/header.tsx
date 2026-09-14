@@ -34,15 +34,19 @@ export default function Header({
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 flex items-center justify-between gap-6">
           {/* Logo + Tagline */}
           <a href="#top" className="flex items-center gap-3 group">
-            <span
-              className="font-script text-2xl md:text-[28px] leading-none text-[#D4AF37] drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)] transition-transform group-hover:scale-[1.03] origin-left"
-              style={{ fontFamily: "var(--font-pacifico), Pacifico, cursive" }}
-            >
-              Throwback Jersey
-            </span>
-            <span className="hidden md:block h-4 w-px bg-[#D4AF37]/60" />
-            <span className="hidden md:block text-[10px] tracking-[0.3em] text-white/80 font-ui uppercase">
-              Wear the Legacy
+            <img
+              src="/images/logo-transparent.png"
+              alt="Throwback Jersey logo"
+              className="h-12 md:h-14 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-transform group-hover:scale-[1.03] origin-left"
+            />
+            <span className="hidden md:block h-8 w-px bg-[#D4AF37]/60" />
+            <span className="hidden md:flex flex-col leading-tight">
+              <span className="text-[10px] tracking-[0.3em] text-white font-ui uppercase">
+                Wear the Legacy
+              </span>
+              <span className="text-[9px] tracking-[0.25em] text-[#D4AF37]/80 font-ui uppercase mt-0.5">
+                Est. 2026
+              </span>
             </span>
           </a>
 
@@ -106,12 +110,11 @@ export default function Header({
           />
           <div className="absolute top-0 right-0 bottom-0 w-[78%] max-w-sm bg-[#0D0D0D] border-l border-[#D4AF37]/30 p-7 flex flex-col">
             <div className="flex items-center justify-between mb-10">
-              <span
-                className="font-script text-[#D4AF37] text-2xl"
-                style={{ fontFamily: "var(--font-pacifico), Pacifico, cursive" }}
-              >
-                Throwback Jersey
-              </span>
+              <img
+                src="/images/logo-transparent.png"
+                alt="Throwback Jersey logo"
+                className="h-16 w-auto object-contain"
+              />
               <button
                 aria-label="Close menu"
                 onClick={() => setMobileOpen(false)}

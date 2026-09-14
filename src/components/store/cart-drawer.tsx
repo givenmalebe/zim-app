@@ -73,9 +73,10 @@ export default function CartDrawer({
           <div className="flex-1 overflow-y-auto no-scrollbar">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-8 gap-4">
-                <Icons.ShoppingBag
-                  className="w-12 h-12 text-white/15"
-                  strokeWidth={1}
+                <img
+                  src="/images/logo-transparent.png"
+                  alt="Throwback Jersey logo"
+                  className="h-20 w-auto object-contain opacity-40"
                 />
                 <p className="text-white/60 text-sm font-body max-w-[220px]">
                   Your bag is empty. Time to find your story.
