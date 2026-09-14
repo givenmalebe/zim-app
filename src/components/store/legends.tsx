@@ -2,13 +2,24 @@
 
 import { Icons } from "@/lib/icons";
 
-const legends = [
+type Legend = {
+  name: string;
+  role: string;
+  quote: string;
+  era: string;
+  image: string;
+  sport: "football" | "cricket";
+};
+
+const legends: Legend[] = [
   {
     name: "Peter Ndlovu",
     role: "Warriors Captain · 1992–2010",
     quote:
       "When you put on that jersey, you carry the dreams of every kid kicking a ball on a dusty street.",
     era: "1990s — 2000s",
+    image: "/images/legend-peter-ndlovu.png",
+    sport: "football",
   },
   {
     name: "Moses Chunga",
@@ -16,6 +27,8 @@ const legends = [
     quote:
       "The badge is heavier than it looks. That weight is the love of a nation.",
     era: "1980s — 1990s",
+    image: "/images/legend-moses-chunga.png",
+    sport: "football",
   },
   {
     name: "Benjani Mwaruwari",
@@ -23,10 +36,42 @@ const legends = [
     quote:
       "We didn't play for the salary. We played so the next generation would believe.",
     era: "2000s — 2010s",
+    image: "/images/legend-benjani.png",
+    sport: "football",
+  },
+  {
+    name: "Andy Flower",
+    role: "Wicketkeeper-Batsman · 213 ODIs",
+    quote:
+      "Zimbabwe taught the cricketing world that heart can outplay handbooks.",
+    era: "1992 — 2003",
+    image: "/images/legend-andy-flower.png",
+    sport: "cricket",
+  },
+  {
+    name: "Heath Streak",
+    role: "Fast Bowler · 216 Wickets",
+    quote:
+      "Every ball I bowled carried the dust of Bulawayo with it. That never left me.",
+    era: "1993 — 2005",
+    image: "/images/legend-heath-streak.png",
+    sport: "cricket",
+  },
+  {
+    name: "Grant Flower",
+    role: "Opening Batsman · 221 ODIs",
+    quote:
+      "We were the underdogs who refused to lie down. That's the Zimbabwe I'll always remember.",
+    era: "1992 — 2010",
+    image: "/images/legend-grant-flower.png",
+    sport: "cricket",
   },
 ];
 
 export default function Legends() {
+  const footballers = legends.filter((l) => l.sport === "football");
+  const cricketers = legends.filter((l) => l.sport === "cricket");
+
   return (
     <section
       id="legends"
@@ -38,6 +83,7 @@ export default function Legends() {
       }}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-10">
+        {/* Section header */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-3">
             <span className="h-px w-8 bg-[#D4AF37]" />
@@ -54,52 +100,124 @@ export default function Legends() {
           </h2>
           <p className="mt-5 max-w-2xl mx-auto text-[#555] text-[15px] leading-[1.7] font-body">
             We don&apos;t just sell jerseys — we tell the stories of the men who
-            ran, bled, and lifted a nation while wearing them. Every Throwback is
-            a chapter in their book.
+            ran, bled, and lifted a nation while wearing them. From the dusty
+            football pitches to the cricket grounds of Harare Sports Club, every
+            Throwback is a chapter in their book.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {legends.map((l, i) => (
-            <article
-              key={l.name}
-              className="group relative bg-white border border-black/[0.06] p-8 hover:border-[#D4AF37] transition-all duration-300 lift"
-            >
-              {/* Big number */}
-              <span
-                className="absolute -top-3 right-5 font-display text-[#D4AF37]/15 text-[110px] leading-none select-none"
-                style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </span>
-
-              <div className="relative">
-                <div className="w-12 h-px bg-[#D4AF37] mb-6" />
-                <h3
-                  className="font-display text-[#0D0D0D] text-3xl leading-tight"
-                  style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
-                >
-                  {l.name}
-                </h3>
-                <p className="text-[10px] tracking-[0.2em] text-[#999] font-ui uppercase mt-2">
-                  {l.role}
-                </p>
-
-                <blockquote className="mt-6 text-[#444] text-[15px] leading-[1.7] font-body italic relative pl-5 border-l-2 border-[#D4AF37]/40">
-                  &ldquo;{l.quote}&rdquo;
-                </blockquote>
-
-                <div className="mt-6 flex items-center justify-between pt-5 border-t border-black/[0.06]">
-                  <span className="text-[10px] tracking-[0.25em] text-[#0D0D0D]/60 font-ui uppercase">
-                    {l.era}
-                  </span>
-                  <Icons.Star className="w-4 h-4 text-[#D4AF37] fill-[#D4AF37]" />
-                </div>
-              </div>
-            </article>
-          ))}
+        {/* Football legends */}
+        <div className="mb-12">
+          <SportHeader
+            label="Football"
+            sub="The Beautiful Game · The Warriors"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {footballers.map((l, i) => (
+              <LegendCard key={l.name} legend={l} index={i} />
+            ))}
+          </div>
         </div>
+
+        {/* Cricket legends */}
+        <div>
+          <SportHeader label="Cricket" sub="The Chevrons · A Cricketing Nation" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {cricketers.map((l, i) => (
+              <LegendCard key={l.name} legend={l} index={i + 3} />
+            ))}
+          </div>
+        </div>
+
+        {/* Note about AI portraits */}
+        <p className="mt-12 text-center text-[#999] text-[10px] tracking-[0.2em] font-ui uppercase">
+          Portraits are AI-generated artistic representations · Swap with official
+          photography before launch
+        </p>
       </div>
     </section>
+  );
+}
+
+function SportHeader({ label, sub }: { label: string; sub: string }) {
+  return (
+    <div className="flex items-center justify-between mb-6 pb-3 border-b border-[#0D0D0D]/15">
+      <div className="flex items-center gap-4">
+        <span
+          className="font-display text-[#0D0D0D] text-3xl md:text-4xl tracking-wide"
+          style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
+        >
+          {label.toUpperCase()}
+        </span>
+        <span className="hidden sm:inline text-[#666] text-[11px] tracking-[0.25em] font-ui uppercase">
+          {sub}
+        </span>
+      </div>
+      <span className="text-[10px] tracking-[0.3em] text-[#D4AF37] font-ui uppercase font-semibold">
+        Legends
+      </span>
+    </div>
+  );
+}
+
+function LegendCard({ legend, index }: { legend: Legend; index: number }) {
+  return (
+    <article className="group relative bg-white border border-black/[0.06] hover:border-[#D4AF37] transition-all duration-300 lift overflow-hidden">
+      {/* Portrait image */}
+      <div className="relative aspect-square overflow-hidden bg-[#1A1A1A]">
+        <img
+          src={legend.image}
+          alt={`Portrait of ${legend.name} — ${legend.role}`}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {/* Subtle dark overlay at bottom for portrait legibility */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
+
+        {/* Sport badge */}
+        <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#D4AF37] text-[#0D0D0D] text-[9px] tracking-[0.25em] font-ui uppercase font-semibold">
+          {legend.sport}
+        </span>
+
+        {/* Big number watermark */}
+        <span
+          className="absolute top-2 right-3 font-display text-white/30 text-[80px] leading-none select-none"
+          style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+        {/* Name on image */}
+        <div className="absolute bottom-3 left-3 right-3">
+          <h3
+            className="font-display text-white text-2xl leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
+          >
+            {legend.name.toUpperCase()}
+          </h3>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="p-5">
+        <p className="text-[10px] tracking-[0.2em] text-[#999] font-ui uppercase mb-3">
+          {legend.role}
+        </p>
+
+        <blockquote className="text-[#444] text-[14px] leading-[1.6] font-body italic relative pl-4 border-l-2 border-[#D4AF37]/40">
+          &ldquo;{legend.quote}&rdquo;
+        </blockquote>
+
+        <div className="mt-5 flex items-center justify-between pt-4 border-t border-black/[0.06]">
+          <span className="text-[10px] tracking-[0.25em] text-[#0D0D0D]/60 font-ui uppercase">
+            {legend.era}
+          </span>
+          <div className="flex items-center gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Icons.Star key={i} className="w-2.5 h-2.5 text-[#D4AF37] fill-[#D4AF37]" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
   );
 }
