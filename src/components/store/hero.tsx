@@ -15,8 +15,9 @@ export default function Hero() {
           alt="Zimbabwean football fan holding the Zimbabwe flag at golden hour"
           className="w-full h-full object-cover object-center animate-slow-zoom"
         />
-        <div className="absolute inset-0 hero-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-black/40" />
+        {/* Subtle vignette to blend photo edges with the dark surround */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0D0D] via-transparent to-[#0D0D0D] opacity-60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-[#0D0D0D]/40" />
       </div>
 
       {/* Vertical words - right side */}
