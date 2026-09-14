@@ -6,6 +6,7 @@ export type Product = {
   image: string;
   colorway: string;
   badge?: string;
+  category: "jersey" | "lifestyle";
 };
 
 export const products: Product[] = [
@@ -17,6 +18,7 @@ export const products: Product[] = [
     image: "/images/product-jersey-grey.png",
     colorway: "Heather Grey",
     badge: "Signature",
+    category: "jersey",
   },
   {
     id: "p2",
@@ -25,6 +27,7 @@ export const products: Product[] = [
     price: 80,
     image: "/images/product-jersey-green.png",
     colorway: "Forest Green",
+    category: "jersey",
   },
   {
     id: "p3",
@@ -34,6 +37,7 @@ export const products: Product[] = [
     image: "/images/product-jersey-black.png",
     colorway: "Carbon Black",
     badge: "Limited",
+    category: "jersey",
   },
   {
     id: "p4",
@@ -42,6 +46,7 @@ export const products: Product[] = [
     price: 72,
     image: "/images/product-jersey-yellow.png",
     colorway: "Marigold",
+    category: "jersey",
   },
   {
     id: "p5",
@@ -50,6 +55,7 @@ export const products: Product[] = [
     price: 76,
     image: "/images/product-jersey-red.png",
     colorway: "Crimson Red",
+    category: "jersey",
   },
   {
     id: "p6",
@@ -58,6 +64,7 @@ export const products: Product[] = [
     price: 74,
     image: "/images/product-jersey-white.png",
     colorway: "Stadium White",
+    category: "jersey",
   },
   {
     id: "p7",
@@ -67,6 +74,7 @@ export const products: Product[] = [
     image: "/images/product-jersey-navy.png",
     colorway: "Deep Navy",
     badge: "New",
+    category: "jersey",
   },
   {
     id: "p8",
@@ -75,6 +83,40 @@ export const products: Product[] = [
     price: 79,
     image: "/images/product-jersey-maroon.png",
     colorway: "Vintage Maroon",
+    category: "jersey",
+  },
+];
+
+export const lifestyleImages = [
+  {
+    src: "/images/lifestyle-boys-pitch.jpg",
+    alt: "Six boys in throwback jerseys with TJ logo standing on a sunny soccer pitch",
+    caption: "Next Generation · Pitch Session",
+  },
+  {
+    src: "/images/lifestyle-group-men.jpg",
+    alt: "Five men wearing Throwback Jersey apparel with TJ logo in an urban alley",
+    caption: "The Crew · Street Editorial",
+  },
+  {
+    src: "/images/lifestyle-boys-bleachers.jpg",
+    alt: "Six boys near wooden bleachers wearing jerseys with the TJ shield logo on the chest",
+    caption: "Heritage Day · Bleachers",
+  },
+  {
+    src: "/images/lifestyle-men-street.jpg",
+    alt: "Three stylish men on a city street wearing Throwback Jersey apparel with TJ logo",
+    caption: "Golden Hour · City Streets",
+  },
+  {
+    src: "/images/lifestyle-two-men-brick.jpg",
+    alt: "Two men posing against a brick wall wearing apparel with the TJ logo on the chest",
+    caption: "Brothers · Brick Wall",
+  },
+  {
+    src: "/images/lifestyle-black-jersey.jpg",
+    alt: "Single young man in a black retro jersey with the TJ shield logo embroidered on the chest",
+    caption: "Solo Shot · Sable Noir",
   },
 ];
 

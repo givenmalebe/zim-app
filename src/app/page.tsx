@@ -9,6 +9,7 @@ import OurStory from "@/components/store/our-story";
 import FeaturesBar from "@/components/store/features-bar";
 import Collection from "@/components/store/collection";
 import Legends from "@/components/store/legends";
+import Lookbook from "@/components/store/lookbook";
 import Newsletter from "@/components/store/newsletter";
 import Footer from "@/components/store/footer";
 import CartDrawer, { type CartItem } from "@/components/store/cart-drawer";
@@ -70,6 +71,7 @@ export default function Home() {
         <OurStory />
         <FeaturesBar />
         <Collection onAddToCart={handleAdd} />
+        <Lookbook />
         <Legends />
         <Newsletter />
       </main>

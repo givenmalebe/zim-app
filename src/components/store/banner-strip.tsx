@@ -6,12 +6,12 @@ const bannerImages = [
     alt: "Three Zimbabwean football players in striped jerseys celebrating together",
   },
   {
-    src: "/images/banner-ruins.png",
-    alt: "Ancient Great Zimbabwe stone ruins",
+    src: "/images/lifestyle-two-men-brick.jpg",
+    alt: "Two men wearing Throwback Jersey apparel with TJ logo on the chest, against a brick wall",
   },
   {
     src: "/images/banner-jersey.png",
-    alt: "Close-up of grey throwback jersey with Zimbabwe flag trim and crest",
+    alt: "Close-up of grey throwback jersey with Zimbabwe flag trim and TJ crest",
   },
   {
     src: "/images/banner-crowd.png",
@@ -69,7 +69,7 @@ export default function BannerStrip() {
 
       <div className="text-center py-6">
         <p className="text-white/40 text-[10px] tracking-[0.3em] font-ui uppercase">
-          Players · Ruins · Craftsmanship · Crowds
+          Players · Wearers · Craftsmanship · Crowds
         </p>
       </div>
     </section>
