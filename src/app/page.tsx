@@ -13,12 +13,14 @@ import Lookbook from "@/components/store/lookbook";
 import Newsletter from "@/components/store/newsletter";
 import Footer from "@/components/store/footer";
 import CartDrawer, { type CartItem } from "@/components/store/cart-drawer";
+import CatalogModal from "@/components/store/catalog-modal";
 import type { Product } from "@/lib/products";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
   const [items, setItems] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [catalogOpen, setCatalogOpen] = useState(false);
   const { toast } = useToast();
 
   const cartCount = items.reduce((s, i) => s + i.qty, 0);
@@ -70,7 +72,10 @@ export default function Home() {
         <BannerStrip />
         <OurStory />
         <FeaturesBar />
-        <Collection onAddToCart={handleAdd} />
+        <Collection
+          onAddToCart={handleAdd}
+          onViewAll={() => setCatalogOpen(true)}
+        />
         <Lookbook />
         <Legends />
         <Newsletter />
@@ -85,6 +90,12 @@ export default function Home() {
         onInc={handleInc}
         onDec={handleDec}
         onRemove={handleRemove}
+      />
+
+      <CatalogModal
+        open={catalogOpen}
+        onClose={() => setCatalogOpen(false)}
+        onAddToCart={handleAdd}
       />
 
       {/* Floating cart trigger (mobile only - desktop uses header cart icon) */}
