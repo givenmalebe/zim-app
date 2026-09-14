@@ -38,14 +38,14 @@ export default function Lookbook() {
         </div>
 
         {/* Featured image */}
-        <div className="relative mb-6 group overflow-hidden">
+        <div className="relative mb-6 group overflow-hidden bg-[#0D0D0D]">
           <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
             <img
               src={hero.src}
               alt={hero.alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
             {/* Caption */}
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 flex-wrap">
               <div>
