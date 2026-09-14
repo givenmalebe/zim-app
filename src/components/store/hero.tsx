@@ -10,11 +10,11 @@ export default function Hero() {
     >
       {/* Background image — mobile: cover with vertical image, desktop: cover with horizontal image */}
       <div className="absolute inset-0">
-        {/* Mobile: vertical hero image, full coverage */}
+        {/* Mobile: vertical hero image, full coverage. object-top keeps the sky/fist area in view */}
         <img
           src="/images/hero-fan-mobile.png"
           alt="Zimbabwean football fan holding the Zimbabwe flag at golden hour"
-          className="md:hidden absolute inset-0 w-full h-full object-cover object-center animate-slow-zoom"
+          className="md:hidden absolute inset-0 w-full h-full object-cover object-top animate-slow-zoom"
         />
         {/* Desktop: horizontal hero image, fills the viewport */}
         <img
