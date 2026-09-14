@@ -79,7 +79,7 @@ export default function Hero() {
 
           <p className="text-white/85 text-[15px] sm:text-base leading-[1.7] max-w-[480px] font-body mb-9">
             From the dusty pitches to the nation&apos;s biggest stages, Zimbabwean
-            football has always been about more than a game. It&apos;s about
+            sport has always been about more than a game. It&apos;s about
             resilience. It&apos;s about unity. It&apos;s about a nation that never
             stops believing. Throwback Jersey brings those unforgettable moments
             back to life — so you can wear the legacy.
