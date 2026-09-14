@@ -10,6 +10,7 @@ type Legend = {
   image: string;
   sport: "football" | "cricket" | "rugby";
   highlights: string[];
+  realPhoto?: boolean;
 };
 
 const legends: Legend[] = [
@@ -126,6 +127,7 @@ const legends: Legend[] = [
     era: "2008 — 2019",
     image: "/images/legend-tendai-mtawarira.png",
     sport: "rugby",
+    realPhoto: true,
     highlights: [
       "117 caps for South Africa Springboks — most capped prop",
       "2019 Rugby World Cup winner (vs England, final)",
@@ -216,7 +218,7 @@ export default function Legends() {
 
         {/* Note about AI portraits */}
         <p className="mt-12 text-center text-[#999] text-[10px] tracking-[0.2em] font-ui uppercase">
-          Portraits are AI-generated artistic representations · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
+          Tendai Mtawarira card uses a real photograph (Wikimedia Commons) · Other portraits are AI-generated artistic representations · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
         </p>
       </div>
     </section>
@@ -262,13 +264,23 @@ function LegendCard({ legend, index }: { legend: Legend; index: number }) {
           {legend.sport}
         </span>
 
-        {/* Big number watermark */}
-        <span
-          className="absolute top-2 right-3 font-display text-white/30 text-[80px] leading-none select-none"
-          style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
+        {/* Real photo badge (when applicable) */}
+        {legend.realPhoto && (
+          <span className="absolute top-3 right-3 px-2.5 py-1 bg-[#319E49] text-white text-[8px] tracking-[0.25em] font-ui uppercase font-semibold flex items-center gap-1">
+            <Icons.Star className="w-2.5 h-2.5 fill-white" />
+            Real Photo
+          </span>
+        )}
+
+        {/* Big number watermark (hidden when realPhoto to avoid overlap) */}
+        {!legend.realPhoto && (
+          <span
+            className="absolute top-2 right-3 font-display text-white/30 text-[80px] leading-none select-none"
+            style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        )}
 
         {/* Name on image */}
         <div className="absolute bottom-3 left-3 right-3">
