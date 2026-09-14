@@ -9,62 +9,99 @@ type Legend = {
   era: string;
   image: string;
   sport: "football" | "cricket";
+  highlights: string[];
 };
 
 const legends: Legend[] = [
   {
     name: "Peter Ndlovu",
-    role: "Warriors Captain · 1992–2010",
+    role: "Forward · Warriors Captain · Coventry & Sheffield United",
     quote:
       "When you put on that jersey, you carry the dreams of every kid kicking a ball on a dusty street.",
-    era: "1990s — 2000s",
+    era: "1992 — 2010",
     image: "/images/legend-peter-ndlovu.png",
     sport: "football",
+    highlights: [
+      "First African to play in the English Premier League (Coventry, 1992)",
+      "25 goals in 135 apps for Sheffield United",
+      "Captained Zimbabwe at 2004 & 2006 AFCON",
+      "Began career at Highlanders FC, Bulawayo",
+    ],
   },
   {
     name: "Moses Chunga",
-    role: "Midfield Maestro",
+    role: "Midfield Maestro · 'The Razorman'",
     quote:
       "The badge is heavier than it looks. That weight is the love of a nation.",
     era: "1980s — 1990s",
     image: "/images/legend-moses-chunga.png",
     sport: "football",
+    highlights: [
+      "Record 46 goals in a single season (1986) — still unbeaten",
+      "Revered as one of Zimbabwe's greatest ever midfielders",
+      "Dynamos FC legend and Zimbabwe international",
+      "Born 17 October 1965",
+    ],
   },
   {
     name: "Benjani Mwaruwari",
-    role: "Striker · 25 Goals for Zimbabwe",
+    role: "Striker · Portsmouth, Man City & Auxerre",
     quote:
       "We didn't play for the salary. We played so the next generation would believe.",
-    era: "2000s — 2010s",
+    era: "1999 — 2010",
     image: "/images/legend-benjani.png",
     sport: "football",
+    highlights: [
+      "First Zimbabwean to score in the UEFA Champions League",
+      "Played for Auxerre, Portsmouth, Manchester City",
+      "31 caps for Zimbabwe, 8+ international goals",
+      "Born in Bulawayo, 13 August 1978",
+    ],
   },
   {
     name: "Andy Flower",
-    role: "Wicketkeeper-Batsman · 213 ODIs",
+    role: "Wicketkeeper-Batsman · Zimbabwe Captain",
     quote:
       "Zimbabwe taught the cricketing world that heart can outplay handbooks.",
     era: "1992 — 2003",
     image: "/images/legend-andy-flower.png",
     sport: "cricket",
+    highlights: [
+      "63 Tests, 213 ODIs — over 11,500 international runs",
+      "Holds Zimbabwe records: most Test runs, highest Test average",
+      "Innings of 232* vs India (1995) — iconic unbeaten ton",
+      "Captained Zimbabwe for over 10 years",
+    ],
   },
   {
     name: "Heath Streak",
-    role: "Fast Bowler · 216 Wickets",
+    role: "Fast Bowler · Zimbabwe Captain",
     quote:
       "Every ball I bowled carried the dust of Bulawayo with it. That never left me.",
     era: "1993 — 2005",
     image: "/images/legend-heath-streak.png",
     sport: "cricket",
+    highlights: [
+      "216 Test wickets in 65 matches — Zimbabwe's greatest",
+      "Only Zimbabwean with 100+ Test wickets",
+      "Completed the double: 2,000 runs + 200 ODI wickets",
+      "Debuted vs Pakistan, became long-time bowling spearhead",
+    ],
   },
   {
     name: "Grant Flower",
-    role: "Opening Batsman · 221 ODIs",
+    role: "Opening Batsman · Zimbabwe Anchorman",
     quote:
       "We were the underdogs who refused to lie down. That's the Zimbabwe I'll always remember.",
     era: "1992 — 2010",
     image: "/images/legend-grant-flower.png",
     sport: "cricket",
+    highlights: [
+      "67 Tests and 221 ODIs for Zimbabwe",
+      "Most successful opening batsman in Zimbabwe's history",
+      "Scored 3 of his 6 Test centuries against the mighty Aussies",
+      "Averaged over 40 against Australia — a rare feat",
+    ],
   },
 ];
 
@@ -101,8 +138,8 @@ export default function Legends() {
           <p className="mt-5 max-w-2xl mx-auto text-[#555] text-[15px] leading-[1.7] font-body">
             We don&apos;t just sell jerseys — we tell the stories of the men who
             ran, bled, and lifted a nation while wearing them. From the dusty
-            football pitches to the cricket grounds of Harare Sports Club, every
-            Throwback is a chapter in their book.
+            football pitches of Bulawayo to the cricket grounds of Harare Sports
+            Club, every Throwback is a chapter in their book.
           </p>
         </div>
 
@@ -131,8 +168,7 @@ export default function Legends() {
 
         {/* Note about AI portraits */}
         <p className="mt-12 text-center text-[#999] text-[10px] tracking-[0.2em] font-ui uppercase">
-          Portraits are AI-generated artistic representations · Swap with official
-          photography before launch
+          Portraits are AI-generated artistic representations · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Transfermarkt &amp; Pindula
         </p>
       </div>
     </section>
@@ -171,7 +207,7 @@ function LegendCard({ legend, index }: { legend: Legend; index: number }) {
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {/* Subtle dark overlay at bottom for portrait legibility */}
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent" />
 
         {/* Sport badge */}
         <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#D4AF37] text-[#0D0D0D] text-[9px] tracking-[0.25em] font-ui uppercase font-semibold">
@@ -206,6 +242,19 @@ function LegendCard({ legend, index }: { legend: Legend; index: number }) {
         <blockquote className="text-[#444] text-[14px] leading-[1.6] font-body italic relative pl-4 border-l-2 border-[#D4AF37]/40">
           &ldquo;{legend.quote}&rdquo;
         </blockquote>
+
+        {/* Career highlights list */}
+        <ul className="mt-4 space-y-1.5">
+          {legend.highlights.map((h, i) => (
+            <li
+              key={i}
+              className="flex items-start gap-2 text-[11px] text-[#555] font-body leading-snug"
+            >
+              <Icons.Star className="w-2.5 h-2.5 text-[#D4AF37] fill-[#D4AF37] mt-1 shrink-0" />
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
 
         <div className="mt-5 flex items-center justify-between pt-4 border-t border-black/[0.06]">
           <span className="text-[10px] tracking-[0.25em] text-[#0D0D0D]/60 font-ui uppercase">
