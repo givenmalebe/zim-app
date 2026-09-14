@@ -63,7 +63,7 @@ export default function Hero() {
               MORE THAN A
             </span>
             <span
-              className="block text-gold-gradient text-[80px] sm:text-[110px] lg:text-[148px] -mt-2"
+              className="block text-white text-[80px] sm:text-[110px] lg:text-[148px] -mt-2"
               style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
             >
               JERSEY
