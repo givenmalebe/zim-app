@@ -2,7 +2,7 @@
 
 import { Icons } from "@/lib/icons";
 
-export default function OurStory() {
+export default function OurStory({ onOpenStory }: { onOpenStory: () => void }) {
   return (
     <section id="our-story" className="relative bg-[#F5F2EC] py-20 md:py-28 overflow-hidden">
       {/* Subtle paper grain */}
@@ -45,16 +45,16 @@ export default function OurStory() {
           </div>
 
           <div className="mt-9 flex flex-wrap items-center gap-6">
-            <a
-              href="#collection"
+            <button
+              onClick={onOpenStory}
               className="group inline-flex items-center gap-3 bg-[#0D0D0D] text-white px-7 py-4 text-[11px] tracking-[0.3em] font-ui uppercase hover:bg-[#D4AF37] hover:text-[#0D0D0D] transition-all duration-300"
             >
               Our Story
               <Icons.ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-[#D4AF37] group-hover:text-[#0D0D0D]" strokeWidth={1.5} />
-            </a>
+            </button>
             <div className="flex items-center gap-2 text-[#666] text-xs font-ui tracking-[0.2em] uppercase">
               <Icons.Star className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]" />
-              Est. 2024
+              Est. 2026
             </div>
           </div>
         </div>

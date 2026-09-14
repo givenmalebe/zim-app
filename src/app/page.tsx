@@ -116,10 +116,10 @@ export default function Home() {
       />
 
       <main className="flex-1">
-        <Hero />
+        <Hero onWatchStory={() => setPageOpen("OUR STORY")} />
         <Marquee />
         <BannerStrip />
-        <OurStory />
+        <OurStory onOpenStory={() => setPageOpen("OUR STORY")} />
         <FeaturesBar />
         <Collection
           onAddToCart={handleAdd}

@@ -2,7 +2,7 @@
 
 import { Icons } from "@/lib/icons";
 
-export default function Hero() {
+export default function Hero({ onWatchStory }: { onWatchStory: () => void }) {
   return (
     <section
       id="top"
@@ -108,7 +108,10 @@ export default function Hero() {
               Explore the Collection
               <Icons.ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
             </a>
-            <button className="group inline-flex items-center gap-3 text-white text-[11px] tracking-[0.3em] font-ui uppercase hover:text-[#D4AF37] transition-colors">
+            <button
+              onClick={onWatchStory}
+              className="group inline-flex items-center gap-3 text-white text-[11px] tracking-[0.3em] font-ui uppercase hover:text-[#D4AF37] transition-colors"
+            >
               <span className="w-9 h-9 rounded-full border border-white/60 group-hover:border-[#D4AF37] flex items-center justify-center transition-colors">
                 <Icons.Play className="w-3 h-3 fill-current" />
               </span>
