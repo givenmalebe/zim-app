@@ -54,7 +54,7 @@ export default function OurStory() {
             </a>
             <div className="flex items-center gap-2 text-[#666] text-xs font-ui tracking-[0.2em] uppercase">
               <Icons.Star className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]" />
-              Est. 2024 · Harare
+              Est. 2024
             </div>
           </div>
         </div>
