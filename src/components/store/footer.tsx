@@ -37,11 +37,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-2">
-            <img
-              src="/images/logo-transparent.png"
-              alt="Throwback Jersey logo"
-              className="h-20 w-auto object-contain mb-5"
-            />
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-[#D4AF37]/10 blur-2xl rounded-full" />
+              <img
+                src="/images/logo-transparent.png"
+                alt="Throwback Jersey logo"
+                className="relative h-28 md:h-32 w-auto object-contain mb-6 drop-shadow-[0_4px_20px_rgba(212,175,55,0.25)]"
+              />
+            </div>
             <p className="mt-1 text-white/55 text-sm leading-[1.7] font-body max-w-xs">
               Heritage jerseys stitched from Zimbabwe&apos;s proudest sporting
               moments. Wear the legacy — pass it on.

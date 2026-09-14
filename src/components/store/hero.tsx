@@ -48,15 +48,6 @@ export default function Hero() {
       {/* Main content */}
       <div className="relative z-10 min-h-[100svh] flex items-center px-6 lg:px-10 max-w-[1440px] mx-auto pt-28 pb-16">
         <div className="max-w-[640px] animate-fade-in-up">
-          {/* Brand logo badge */}
-          <div className="mb-6">
-            <img
-              src="/images/logo-transparent.png"
-              alt="Throwback Jersey logo"
-              className="h-16 md:h-20 w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
-            />
-          </div>
-
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-8 bg-[#D4AF37]" />
             <span className="text-[11px] tracking-[0.3em] text-white/85 font-ui uppercase">

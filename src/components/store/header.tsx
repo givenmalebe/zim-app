@@ -34,17 +34,22 @@ export default function Header({
         <div className="max-w-[1440px] mx-auto px-6 lg:px-10 flex items-center justify-between gap-6">
           {/* Logo + Tagline */}
           <a href="#top" className="flex items-center gap-3 group">
-            <img
-              src="/images/logo-transparent.png"
-              alt="Throwback Jersey logo"
-              className="h-12 md:h-14 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-transform group-hover:scale-[1.03] origin-left"
-            />
-            <span className="hidden md:block h-8 w-px bg-[#D4AF37]/60" />
+            <div className="relative">
+              {/* Subtle gold glow behind logo */}
+              <div className="absolute inset-0 bg-[#D4AF37]/15 blur-xl rounded-full" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 to-transparent rounded-full" />
+              <img
+                src="/images/logo-transparent.png"
+                alt="Throwback Jersey logo"
+                className="relative h-14 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_4px_14px_rgba(0,0,0,0.7)] transition-transform group-hover:scale-[1.05] origin-left"
+              />
+            </div>
+            <span className="hidden md:block h-10 w-px bg-gradient-to-b from-transparent via-[#D4AF37]/80 to-transparent" />
             <span className="hidden md:flex flex-col leading-tight">
-              <span className="text-[10px] tracking-[0.3em] text-white font-ui uppercase">
+              <span className="text-[11px] tracking-[0.3em] text-white font-ui uppercase font-semibold drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                 Wear the Legacy
               </span>
-              <span className="text-[9px] tracking-[0.25em] text-[#D4AF37]/80 font-ui uppercase mt-0.5">
+              <span className="text-[9px] tracking-[0.25em] text-[#D4AF37] font-ui uppercase mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
                 Est. 2026
               </span>
             </span>
