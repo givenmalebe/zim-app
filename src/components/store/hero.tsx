@@ -8,20 +8,33 @@ export default function Hero() {
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-[#0D0D0D]"
     >
-      {/* Background image */}
+      {/* Background image — mobile: cover with vertical image, desktop: cover with horizontal image */}
       <div className="absolute inset-0">
+        {/* Mobile: vertical hero image, full coverage */}
+        <img
+          src="/images/hero-fan-mobile.png"
+          alt="Zimbabwean football fan holding the Zimbabwe flag at golden hour"
+          className="md:hidden absolute inset-0 w-full h-full object-cover object-center animate-slow-zoom"
+        />
+        {/* Desktop: horizontal hero image, fills the viewport */}
         <img
           src="/images/hero-fan.png"
           alt="Zimbabwean football fan holding the Zimbabwe flag at golden hour"
-          className="w-full h-full object-cover object-center animate-slow-zoom"
+          className="hidden md:block w-full h-full object-cover object-center animate-slow-zoom"
         />
-        {/* Left-to-right gradient: dark on left (for text legibility), clear on right (show photo) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-        {/* Bottom-to-top gradient for section transition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-black/30" />
+
+        {/* Mobile: bottom-up gradient so text is legible without hiding the top of the photo */}
+        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/60 to-transparent" />
+        {/* Desktop: left-to-right gradient as before */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+
+        {/* Bottom-to-top gradient for section transition (both) */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-transparent to-transparent" />
+        {/* Subtle top vignette for header legibility */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/80 to-transparent" />
       </div>
 
-      {/* Vertical words - right side */}
+      {/* Vertical words - right side (desktop only) */}
       <div className="hidden md:flex absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 flex-col items-end gap-4 z-20">
         <span
           className="font-script text-white/95 text-2xl leading-none"
@@ -48,8 +61,8 @@ export default function Hero() {
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 min-h-[100svh] flex items-center px-6 lg:px-10 max-w-[1440px] mx-auto pt-28 pb-16">
-        <div className="max-w-[640px] animate-fade-in-up">
+      <div className="relative z-10 min-h-[100svh] flex items-end md:items-center px-6 lg:px-10 max-w-[1440px] mx-auto pt-28 pb-12 md:pb-16">
+        <div className="max-w-[640px] animate-fade-in-up w-full">
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-8 bg-[#D4AF37]" />
             <span className="text-[11px] tracking-[0.3em] text-white/85 font-ui uppercase">
@@ -59,13 +72,13 @@ export default function Hero() {
 
           <h1 className="font-display leading-[0.92] mb-5">
             <span
-              className="block text-white text-[64px] sm:text-[88px] lg:text-[112px]"
+              className="block text-white text-[56px] xs:text-[64px] sm:text-[88px] lg:text-[112px]"
               style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
             >
               MORE THAN A
             </span>
             <span
-              className="block text-white text-[80px] sm:text-[110px] lg:text-[148px] -mt-2"
+              className="block text-white text-[72px] xs:text-[80px] sm:text-[110px] lg:text-[148px] -mt-2"
               style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
             >
               JERSEY
@@ -106,7 +119,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll hint */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+      <div className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-2">
         <span className="text-[9px] tracking-[0.3em] text-white/60 font-ui uppercase">Scroll</span>
         <span className="w-px h-10 bg-gradient-to-b from-[#D4AF37]/80 to-transparent" />
       </div>
