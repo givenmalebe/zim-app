@@ -7,6 +7,7 @@ export type Legend = {
   sport: "football" | "cricket" | "rugby";
   highlights: string[];
   realPhoto?: boolean;
+  imagePosition?: string;
 };
 
 export const legends: Legend[] = [
@@ -121,6 +122,23 @@ export const legends: Legend[] = [
     ],
   },
   {
+    name: "Tatenda Taibu",
+    role: "Wicketkeeper-Batsman · Youngest Test Captain",
+    quote:
+      "Keeping was never just about glovework — it was about carrying the hopes of the nation behind the stumps.",
+    era: "2001 — 2012",
+    image: "/images/legend-tatenda-taibu.jpg",
+    sport: "cricket",
+    realPhoto: true,
+    imagePosition: "top",
+    highlights: [
+      "Youngest captain in Test cricket history (21 years old)",
+      "Over 2,000 Test runs as Zimbabwe's first-choice keeper",
+      "ICC Emerging Player of the Year (2001)",
+      "Carried a rebuilding Chevrons side through the 2000s",
+    ],
+  },
+  {
     name: "Tendai 'Beast' Mtawarira",
     role: "Loosehead Prop · Springbok Legend · Born in Harare",
     quote:
@@ -134,6 +152,22 @@ export const legends: Legend[] = [
       "2019 Rugby World Cup winner (vs England, final)",
       "Debuted 14 June 2008 vs Wales at Loftus Versfeld",
       "Born in Harare, Zimbabwe — 16 Test tries across 11 seasons",
+    ],
+  },
+  {
+    name: "Tsimba Brothers",
+    role: "Backline Duo · Zimbabwe Sables",
+    quote:
+      "Two brothers, one badge — the Tsimba name is rugby royalty in Zimbabwe.",
+    era: "1990s — 2000s",
+    image: "/images/legend-tsimba-brothers.jpg",
+    sport: "rugby",
+    realPhoto: true,
+    highlights: [
+      "Kennedy & Gary Tsimba — brothers who wore the Sables badge",
+      "Kennedy Tsimba starred for Zimbabwe and in South African club rugby",
+      "Feared attacking partnership in Zimbabwean backline",
+      "Named among the greats of Zimbabwean rugby",
     ],
   },
 ];

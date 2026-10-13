@@ -44,10 +44,10 @@ export default function CatalogModal({ open, onClose, onAddToCart }: Props) {
             />
             <div className="hidden md:flex flex-col leading-tight">
               <span className="text-[10px] tracking-[0.3em] text-white font-ui uppercase">
-                Full Catalog
+                The Archive
               </span>
               <span className="text-[9px] tracking-[0.25em] text-[#D4AF37] font-ui uppercase">
-                {products.length} Heritage Jerseys
+                {products.length} Archive Entries
               </span>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function CatalogModal({ open, onClose, onAddToCart }: Props) {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search jerseys, teams, colors..."
+              placeholder="Search the archive, teams, colors..."
               className="flex-1 bg-transparent text-white text-sm placeholder:text-white/40 focus:outline-none font-ui"
             />
             {query && (
@@ -164,7 +164,7 @@ export default function CatalogModal({ open, onClose, onAddToCart }: Props) {
           {/* Result count */}
           <div className="mb-6 flex items-center justify-between flex-wrap gap-3">
             <div className="text-[10px] tracking-[0.25em] text-white/50 font-ui uppercase">
-              Showing {filtered.length} of {products.length} jerseys
+              Showing {filtered.length} of {products.length} archive entries
             </div>
             {(activeEra !== "ALL" || activeSport !== "ALL" || query) && (
               <button
@@ -186,7 +186,7 @@ export default function CatalogModal({ open, onClose, onAddToCart }: Props) {
             <div className="text-center py-32">
               <Icons.Search className="w-12 h-12 text-white/15 mx-auto mb-4" strokeWidth={1} />
               <p className="text-white/60 text-sm font-body max-w-md mx-auto">
-                No jerseys match your filters. Try a different combination.
+                No archive entries match your filters. Try a different combination.
               </p>
             </div>
           ) : (
@@ -206,7 +206,7 @@ export default function CatalogModal({ open, onClose, onAddToCart }: Props) {
             Throwback Jersey · Wear the Legacy
           </p>
           <p className="text-white/40 text-[10px] tracking-[0.25em] font-ui uppercase">
-            All jerseys carry authentic team crests · No TJ branding
+            Heritage archive · Jerseys documented, licences in progress
           </p>
         </div>
       </div>

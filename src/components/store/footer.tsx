@@ -1,33 +1,20 @@
 'use client';
 
 import { Icons } from "@/lib/icons";
-import { navItems } from "@/lib/products";
 
-const shopLinks = [
-  "All Jerseys",
-  "Signature Editions",
-  "Limited Drops",
-  "Vintage Restorations",
-  "Gift Cards",
-];
+const discoverLinks = ["Our Story", "The Archive", "Legends", "Journal"];
 
-const supportLinks = [
-  "Shipping & Returns",
-  "Size Guide",
-  "Track Order",
-  "FAQs",
-  "Contact Us",
-];
+const collectionLinks = ["Football", "Cricket", "Rugby", "Limited Editions"];
 
-const aboutLinks = [
-  "Our Story",
-  "Legends Project",
-  "Impact",
-  "Journal",
-  "Careers",
-];
+const legacyLinks = ["Our Impact", "Share Your Story", "Partners"];
 
-export default function Footer() {
+const helpLinks = ["Shipping", "Returns", "Size Guide", "Contact"];
+
+export default function Footer({
+  onNavigate,
+}: {
+  onNavigate?: (label: string) => void;
+}) {
   return (
     <footer className="relative bg-[#0D0D0D] text-white border-t border-white/10">
       {/* Top gold hairline */}
@@ -79,10 +66,10 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          <FooterColumn title="Shop" links={shopLinks} />
-          <FooterColumn title="Navigate" links={navItems} />
-          <FooterColumn title="Support" links={supportLinks} />
-          <FooterColumn title="About" links={aboutLinks} />
+          <FooterColumn title="Discover" links={discoverLinks} onNavigate={onNavigate} />
+          <FooterColumn title="Collection" links={collectionLinks} onNavigate={onNavigate} />
+          <FooterColumn title="The Legacy" links={legacyLinks} onNavigate={onNavigate} />
+          <FooterColumn title="Help" links={helpLinks} onNavigate={onNavigate} />
         </div>
 
         {/* Bottom bar */}
@@ -97,22 +84,20 @@ export default function Footer() {
             <a href="#" className="hover:text-[#D4AF37] transition-colors">Accessibility</a>
           </div>
         </div>
-
-        {/* Big watermark */}
-        <div className="mt-14 select-none pointer-events-none">
-          <h3
-            className="font-display text-white/[0.04] text-center text-[clamp(60px,12vw,180px)] leading-none tracking-[0.06em]"
-            style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
-          >
-            THROWBACK JERSEY
-          </h3>
-        </div>
       </div>
     </footer>
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: string[] }) {
+function FooterColumn({
+  title,
+  links,
+  onNavigate,
+}: {
+  title: string;
+  links: string[];
+  onNavigate?: (label: string) => void;
+}) {
   return (
     <div>
       <h4 className="text-white text-[11px] tracking-[0.3em] font-ui uppercase font-semibold mb-5">
@@ -121,12 +106,12 @@ function FooterColumn({ title, links }: { title: string; links: string[] }) {
       <ul className="space-y-3">
         {links.map((l) => (
           <li key={l}>
-            <a
-              href="#"
-              className="text-white/55 text-sm font-body hover:text-[#D4AF37] transition-colors capitalize"
+            <button
+              onClick={() => onNavigate?.(l)}
+              className="text-left text-white/55 text-sm font-body hover:text-[#D4AF37] transition-colors capitalize"
             >
-              {l.toLowerCase().replace(/^\w/, (c) => c.toUpperCase())}
-            </a>
+              {l}
+            </button>
           </li>
         ))}
       </ul>

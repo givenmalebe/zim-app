@@ -2,41 +2,27 @@
 
 import { Icons } from "@/lib/icons";
 
-const stats = [
-  { value: "12", label: "Grassroots Academies Supported" },
-  { value: "1,500+", label: "Kits Donated to Township Teams" },
-  { value: "8", label: "Mentor Programs Running Nationwide" },
-  { value: "0%", label: "of Profits That Leave Zimbabwe" },
-];
-
 const programs = [
   {
     image: "/images/feature-brighter-futures.png",
-    title: "Highfield Academy",
-    location: "Harare",
+    title: "Soccer Academy",
+    location: "Highfield, Harare",
     text: "A free Saturday academy for 120 boys and girls aged 8–14, run by former Warriors coaches. Each player receives a Throwback jersey, boots, and a meal every session.",
     metric: "120 kids · Every Saturday",
   },
   {
-    image: "/images/lifestyle-boys-pitch.jpg",
-    title: "Mpopoma Pitch Project",
+    image: "/images/academy-cricket.svg",
+    title: "Cricket Academy",
+    location: "Highfield, Harare",
+    text: "An open-access academy for young cricketers aged 10–17, coached by former Chevrons players. Training, kit, and match-day mentorship are provided at no cost.",
+    metric: "100 kids · Weekly nets",
+  },
+  {
+    image: "/images/academy-rugby.svg",
+    title: "Rugby Academy",
     location: "Bulawayo",
-    text: "We resurfaced two township pitches and donated 300 complete kits to the Mpopoma Junior League. The league now runs 16 teams across U12, U14, and U16.",
-    metric: "300 kits · 16 teams · 2 pitches",
-  },
-  {
-    image: "/images/feature-legendary-players.png",
-    title: "Legends Mentorship",
-    location: "Nationwide",
-    text: "Past Warriors, Chevrons, and Sables players mentor 60 young athletes each year — covering sport, education, mental health, and life after the whistle.",
-    metric: "60 mentees · 12 legends",
-  },
-  {
-    image: "/images/feature-proud-nation.png",
-    title: "Rural Kit Drive",
-    location: "Mashonaland & Matabeleland",
-    text: "Twice a year, our team drives to rural schools across Zimbabwe to deliver kits, balls, and coaching clinics. Every school we visit joins the Throwback family.",
-    metric: "47 schools visited in 2024",
+    text: "A structured pathway for aspiring Sables, focused on schools rugby in Bulawayo and Matabeleland — boots, S&C sessions, and elite coaching for every player who joins.",
+    metric: "80 kids · 2 provinces",
   },
 ];
 
@@ -56,34 +42,15 @@ export default function ImpactPage() {
           className="font-display text-[#0D0D0D] text-5xl md:text-7xl leading-[0.95] mb-6"
           style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
         >
-          EVERY JERSEY FUNDS A FUTURE
+          EVERY JERSEY HELPS BUILD WHAT COMES NEXT
         </h1>
         <p className="text-[#555] text-[15px] md:text-base leading-[1.7] font-body max-w-2xl mx-auto">
-          Football is more than a game in Zimbabwe — it&apos;s a ladder. Every
-          Throwback Jersey purchased helps fund grassroots academies, kit
-          donations, and mentorship programs in townships across the country.
-          The legacy you wear today becomes the future they live tomorrow.
+          We&apos;re building the Throwback Legacy Fund to turn every jersey into
+          grassroots academies, kit donations, and mentorship for the next
+          generation. The model is being finalised &mdash; and when it launches,
+          we&apos;ll publish exactly how much goes where, and who receives it.
         </p>
       </div>
-
-      {/* Stats */}
-      <section className="mb-20">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10">
-          {stats.map((s) => (
-            <div key={s.label} className="bg-white p-8 md:p-10 text-center">
-              <div
-                className="font-display text-[#D4AF37] text-5xl md:text-6xl leading-none mb-2"
-                style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
-              >
-                {s.value}
-              </div>
-              <div className="text-[#0D0D0D] text-[10px] tracking-[0.25em] font-ui uppercase font-semibold">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Programs */}
       <section className="mb-20">
@@ -146,7 +113,7 @@ export default function ImpactPage() {
             className="font-display text-[#0D0D0D] text-4xl md:text-5xl mt-3 tracking-wide"
             style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
           >
-            YOUR PURCHASE, YOUR IMPACT
+            THE THROWBACK LEGACY FUND
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -154,17 +121,17 @@ export default function ImpactPage() {
             {
               step: "01",
               title: "You Buy a Jersey",
-              text: "Every Throwback Jersey purchased contributes directly to our grassroots programs — no middlemen, no admin overhead.",
+              text: "Every Throwback Jersey purchased contributes directly to the Legacy Fund — no middlemen, no admin overhead. Details are being finalised.",
             },
             {
               step: "02",
-              title: "We Fund Programs",
-              text: "100% of profits stay in Zimbabwe, funding academies, kit drives, and mentorship for the next generation of Zimbabwean athletes.",
+              title: "The Fund Gets Built",
+              text: "The Throwback Legacy Fund is being finalised now, and we'll publish exactly how much goes where, and who receives it — before a single jersey ships.",
             },
             {
               step: "03",
-              title: "They Wear the Legacy",
-              text: "Young players receive kits, coaching, and mentorship — carrying the same badge their heroes wore on the world stage.",
+              title: "They Build the Legacy",
+              text: "Funds will support academies, kit drives, and mentorship for the next generation — carrying the same badge their heroes wore on the world stage.",
             },
           ].map((s) => (
             <div
@@ -197,26 +164,20 @@ export default function ImpactPage() {
           className="font-display text-white text-3xl md:text-5xl mb-4 tracking-wide"
           style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
         >
-          HELP US DO MORE
+          THE LEGACY FUND IS COMING
         </h2>
         <p className="text-white/70 text-sm md:text-base mb-7 max-w-md mx-auto font-body leading-relaxed">
-          Donate directly to our grassroots programs, or sponsor a young
-          Zimbabwean athlete&apos;s season.
+          We&apos;re finalising the Throwback Legacy Fund now. When it
+          launches, every detail — how much, where it goes, who receives it
+          — will be published on this page.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="#"
             className="group inline-flex items-center gap-3 px-7 py-4 bg-[#D4AF37] text-[#0D0D0D] text-[11px] tracking-[0.3em] font-ui uppercase font-semibold hover:bg-white transition-all justify-center"
           >
-            Donate Now
-            <Icons.Heart className="w-4 h-4" strokeWidth={1.5} />
-          </a>
-          <a
-            href="#"
-            className="group inline-flex items-center gap-3 px-7 py-4 border-2 border-[#D4AF37] text-[#D4AF37] text-[11px] tracking-[0.3em] font-ui uppercase font-semibold hover:bg-[#D4AF37] hover:text-[#0D0D0D] transition-all justify-center"
-          >
-            Sponsor an Athlete
-            <Icons.ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+            Contact Us
+            <Icons.ArrowRight className="w-4 h-4" strokeWidth={1.5} />
           </a>
         </div>
       </section>

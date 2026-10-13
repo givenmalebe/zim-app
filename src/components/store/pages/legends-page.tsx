@@ -30,10 +30,11 @@ export default function LegendsPage() {
           THOSE WHO WORE THE BADGE
         </h1>
         <p className="text-[#555] text-[15px] md:text-base leading-[1.7] font-body max-w-2xl mx-auto">
-          From the dusty football pitches of Bulawayo to the cricket grounds of
-          Harare Sports Club — the men who ran, bled, and lifted a nation while
-          wearing its colours.
-        </p>
+            We don&apos;t just sell jerseys — we tell the stories of the
+            sportsmen who ran, bled, and lifted a nation while wearing them.
+            From football pitches, cricket grounds and rugby fields, every
+            Throwback is a chapter in their book.
+          </p>
       </div>
 
       {/* Sport filter */}
@@ -123,9 +124,6 @@ export default function LegendsPage() {
               <p className="text-[10px] tracking-[0.2em] text-[#999] font-ui uppercase mb-3">
                 {legend.role}
               </p>
-              <blockquote className="text-[#444] text-[14px] leading-[1.6] font-body italic relative pl-4 border-l-2 border-[#D4AF37]/40">
-                &ldquo;{legend.quote}&rdquo;
-              </blockquote>
               <ul className="mt-4 space-y-1.5">
                 {legend.highlights.map((h, idx) => (
                   <li

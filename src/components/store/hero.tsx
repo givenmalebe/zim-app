@@ -8,23 +8,23 @@ export default function Hero({ onWatchStory }: { onWatchStory: () => void }) {
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-[#0D0D0D]"
     >
-      {/* Background image — mobile: cover with vertical image, desktop: cover with horizontal image */}
+      {/* Background image — landscape hero photo, cover on all viewports */}
       <div className="absolute inset-0">
-        {/* Mobile: vertical hero image, full coverage. object-top keeps the sky/fist area in view */}
+        {/* Mobile: entire photo shown unzoomed (object-contain), so it fits like the desktop view */}
         <img
-          src="/images/hero-fan-mobile.png"
-          alt="Zimbabwean football fan holding the Zimbabwe flag at golden hour"
-          className="md:hidden absolute inset-0 w-full h-full object-cover object-top animate-slow-zoom"
+          src="/images/hero-bg.jpeg"
+          alt="MORE THAN A JERSEY — Zimbabwean sporting heritage"
+          className="md:hidden absolute inset-0 w-full h-full object-contain object-center"
         />
-        {/* Desktop: horizontal hero image, fills the viewport */}
+        {/* Desktop: full-bleed cover */}
         <img
-          src="/images/hero-fan.png"
-          alt="Zimbabwean football fan holding the Zimbabwe flag at golden hour"
-          className="hidden md:block w-full h-full object-cover object-center animate-slow-zoom"
+          src="/images/hero-bg.jpeg"
+          alt="MORE THAN A JERSEY — Zimbabwean sporting heritage"
+          className="hidden md:block absolute inset-0 w-full h-full object-cover object-center animate-slow-zoom"
         />
 
-        {/* Mobile: bottom-up gradient so text is legible without hiding the top of the photo */}
-        <div className="md:hidden absolute inset-0 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/60 to-transparent" />
+        {/* Mobile: bottom-up gradient across the text area so the headline stays legible */}
+        <div className="md:hidden absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/70 to-transparent" />
         {/* Desktop: left-to-right gradient as before */}
         <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
 

@@ -2,31 +2,69 @@
 
 import { Icons } from "@/lib/icons";
 
-const timeline = [
+type TimelineSport = "football" | "rugby" | "cricket";
+
+const timeline: {
+  year: string;
+  title: string;
+  text: string;
+  sport: TimelineSport;
+  showLabel?: boolean;
+}[] = [
   {
     year: "1980",
     title: "Independence",
     text: "Zimbabwe is born. A new flag, a new anthem, a new national team — the Warriors take the pitch for the first time as a free nation.",
+    sport: "football",
+  },
+  {
+    year: "1987",
+    title: "Rugby World Cup Debut",
+    text: "The Sables take the field at the inaugural Rugby World Cup, carrying Zimbabwe's name onto the world stage.",
+    sport: "rugby",
+  },
+  {
+    year: "1991",
+    title: "Rugby World Cup Return",
+    text: "Zimbabwe qualify for a second consecutive Rugby World Cup, proving the Sables belonged among the world's best.",
+    sport: "rugby",
   },
   {
     year: "1992",
-    title: "AFCON Debut",
-    text: "Peter Ndlovu becomes the first African to play in the English Premier League, captaining the Warriors to their first AFCON qualification.",
+    title: "Premier League Pioneer",
+    text: "Peter Ndlovu becomes the first African to play in the English Premier League — paving the way in England for a generation of Zimbabwean players.",
+    sport: "football",
+  },
+  {
+    year: "1992",
+    title: "Test Nation",
+    text: "Zimbabwe play their first Test match against India in Harare, formally becoming a Test-playing nation.",
+    sport: "cricket",
+  },
+  {
+    year: "1999",
+    title: "World Cup Super Six",
+    text: "The Chevrons stun South Africa at the 1999 World Cup and reach the Super Six stage.",
+    sport: "cricket",
   },
   {
     year: "2004",
     title: "COSAFA Glory",
     text: "Zimbabwe wins the COSAFA Castle Cup for the first time, cementing their place as a Southern African football powerhouse.",
+    sport: "football",
   },
   {
     year: "2019",
     title: "AFCON Return",
     text: "After 11 years away, the Warriors return to AFCON — rekindling a nation's passion for the beautiful game.",
+    sport: "football",
   },
   {
-    year: "2024",
+    year: "2026",
     title: "Throwback Jersey is born",
-    text: "Founded in Harare with a single mission: to honour the legends, the moments, and the fans who kept the dream alive.",
+    text: "Founded by Zimbabweans with a single mission: to honor the legends, the moments, and the fan who kept the dream alive.",
+    sport: "football",
+    showLabel: false,
   },
 ];
 
@@ -49,7 +87,7 @@ const values = [
   {
     icon: Icons.Star,
     title: "Craft",
-    text: "Each jersey is cut, stitched, and finished to honour the era it represents — from 1980s cotton to 2000s technical polyester.",
+    text: "Each jersey is cut, stitched, and finished to honour the era it represents — from 1980s cotton to 2000s designs.",
   },
 ];
 
@@ -69,9 +107,8 @@ export default function OurStoryPage() {
           className="font-display text-[#0D0D0D] text-5xl md:text-7xl leading-[0.95] mb-6"
           style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
         >
-          ROOTED IN A NATION
-          <br />
-          BUILT ON PASSION
+          WHERE IT{" "}
+          <span className="text-[#D4AF37]">STARTED</span>
         </h1>
         <p
           className="font-script text-[#D4AF37] text-3xl md:text-4xl"
@@ -98,16 +135,15 @@ export default function OurStoryPage() {
               the fans who kept the dream alive.
             </p>
             <p>
-              Every jersey tells a story. Every story keeps the legacy going —
-              stitched in green, gold, red, and the unbreakable black of a
-              nation that refuses to be forgotten.
+              Every jersey tells a story. Every story keeps the legacy, a nation
+              that refuses to be forgotten.
             </p>
             <p>
-              We started in 2024 in Harare, with one mission: to bring the
-              unforgettable moments of Zimbabwean sport back to life. From the
-              Independence-era cotton kits of the 1980s, through the bold 90s
-              sublimations, to the technical 2000s cuts — we recreate the
-              jerseys that defined a nation.
+              Started in 2026, with one mission: to bring the unforgettable
+              moments of Zimbabwean sport back to life. From the Independence-era
+              cotton kits of the 1980s, through the bold 90s sublimations, to
+              the technical 2000s cuts — we recreate the jerseys that defined a
+              nation.
             </p>
           </div>
         </div>
@@ -176,17 +212,53 @@ export default function OurStoryPage() {
           >
             THE TIMELINE
           </h2>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-5 text-[10px] tracking-[0.2em] font-ui uppercase text-[#666]">
+            <span className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#D4AF37]" /> Football
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#BF211E]" /> Rugby
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#319E49]" /> Cricket
+            </span>
+          </div>
         </div>
         <div className="space-y-8">
           {timeline.map((item, i) => (
-            <div key={item.year} className="relative pl-16 md:pl-0">
+            <div key={`${item.year}-${item.title}`} className="relative pl-16 md:pl-0">
               {/* Dot */}
-              <div className="absolute left-5 md:left-[calc(50%-10px)] top-2 w-5 h-5 rounded-full bg-[#D4AF37] border-4 border-[#FAF9F6] z-10" />
+              <div
+                className="absolute left-5 md:left-[calc(50%-10px)] top-2 w-5 h-5 rounded-full border-4 border-[#FAF9F6] z-10"
+                style={{
+                  backgroundColor:
+                    item.sport === "rugby"
+                      ? "#BF211E"
+                      : item.sport === "cricket"
+                      ? "#319E49"
+                      : "#D4AF37",
+                }}
+              />
               <div
                 className={`md:w-1/2 md:px-12 ${
                   i % 2 === 0 ? "md:ml-0 md:text-right" : "md:ml-auto"
                 }`}
               >
+                {item.showLabel !== false && (
+                  <span
+                    className="text-[9px] tracking-[0.3em] font-ui uppercase font-semibold mb-2 inline-block"
+                    style={{
+                      color:
+                        item.sport === "rugby"
+                          ? "#BF211E"
+                          : item.sport === "cricket"
+                          ? "#319E49"
+                          : "#D4AF37",
+                    }}
+                  >
+                    {item.sport}
+                  </span>
+                )}
                 <span className="font-display text-[#D4AF37] text-5xl block leading-none"
                   style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}>
                   {item.year}

@@ -9,8 +9,42 @@ type Props = {
   onAdd: (p: Product) => void;
 };
 
+const statusMeta: Record<
+  string,
+  { badge: string; badgeClass: string; label: string; description: string }
+> = {
+  ARCHIVE: {
+    badge: "Archive",
+    badgeClass: "bg-[#0D0D0D] text-[#D4AF37] border border-[#D4AF37]/50",
+    label: "ARCHIVE",
+    description: "Fully Documented",
+  },
+  RESEARCH: {
+    badge: "Research",
+    badgeClass: "bg-white/90 text-[#0D0D0D] border border-black/10",
+    label: "RESEARCH",
+    description: "In Progress",
+  },
+  "COMING SOON": {
+    badge: "Coming Soon",
+    badgeClass: "bg-[#D4AF37] text-[#0D0D0D] border border-[#D4AF37]",
+    label: "COMING SOON",
+    description: "Awaiting Licensing",
+  },
+  LICENSED: {
+    badge: "Officially Licensed",
+    badgeClass:
+      "bg-[#D4AF37] text-[#0D0D0D] border border-[#D4AF37]",
+    label: "OFFICIALLY LICENSED HERITAGE EDITION",
+    description: "Available to Purchase",
+  },
+};
+
 export default function ProductCard({ product, onAdd }: Props) {
   const [added, setAdded] = useState(false);
+  const isLicensed = product.status === "LICENSED";
+  const meta = statusMeta[product.status] ?? statusMeta["COMING SOON"];
+
   const handle = () => {
     onAdd(product);
     setAdded(true);
@@ -57,20 +91,23 @@ export default function ProductCard({ product, onAdd }: Props) {
           {product.era}
         </span>
 
-        {/* Product badge (signature/limited) */}
-        {product.badge && (
-          <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#0D0D0D]/80 backdrop-blur text-[#D4AF37] text-[9px] tracking-[0.25em] font-ui uppercase font-semibold border border-[#D4AF37]/40">
-            {product.badge}
-          </span>
-        )}
-
-        <button
-          aria-label="Quick add"
-          onClick={handle}
-          className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/95 backdrop-blur text-[#0D0D0D] flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#0D0D0D] translate-y-2 group-hover:translate-y-0"
+        {/* Status badge (bottom-left) */}
+        <span
+          className={`absolute bottom-3 left-3 px-2.5 py-1 text-[9px] tracking-[0.25em] font-ui uppercase font-semibold ${meta.badgeClass}`}
         >
-          <Icons.Plus className="w-4 h-4" strokeWidth={2} />
-        </button>
+          {meta.badge}
+        </span>
+
+        {/* Quick add — licensed jerseys only */}
+        {isLicensed && (
+          <button
+            aria-label="Quick add"
+            onClick={handle}
+            className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-white/95 backdrop-blur text-[#0D0D0D] flex items-center justify-center shadow-md opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#0D0D0D] translate-y-2 group-hover:translate-y-0"
+          >
+            <Icons.Plus className="w-4 h-4" strokeWidth={2} />
+          </button>
+        )}
       </div>
 
       {/* Info */}
@@ -95,22 +132,34 @@ export default function ProductCard({ product, onAdd }: Props) {
           {product.team}
         </p>
 
-        <div className="mt-4 flex items-center justify-between">
-          <span className="text-[#0D0D0D] font-semibold text-lg font-ui">
-            ${product.price}
-            <span className="text-xs text-[#999] font-normal ml-1">USD</span>
-          </span>
-          <button
-            onClick={handle}
-            className={`text-[10px] tracking-[0.25em] font-ui uppercase px-3 py-2 transition-all ${
-              added
-                ? "bg-[#319E49] text-white"
-                : "bg-[#0D0D0D] text-white hover:bg-[#D4AF37] hover:text-[#0D0D0D]"
-            }`}
-          >
-            {added ? "Added" : "Add to Bag"}
-          </button>
-        </div>
+        {isLicensed ? (
+          <div className="mt-4 flex items-center justify-between">
+            <div className="leading-tight">
+              <span className="text-[#0D0D0D] font-semibold text-lg font-ui">
+                US${product.price}
+              </span>
+              <p className="text-[8px] tracking-[0.2em] text-[#D4AF37] font-ui uppercase font-semibold mt-1">
+                {meta.label}
+              </p>
+            </div>
+            <button
+              onClick={handle}
+              className={`text-[10px] tracking-[0.25em] font-ui uppercase px-3 py-2 transition-all ${
+                added
+                  ? "bg-[#319E49] text-white"
+                  : "bg-[#0D0D0D] text-white hover:bg-[#D4AF37] hover:text-[#0D0D0D]"
+              }`}
+            >
+              {added ? "Added" : "Add to Bag"}
+            </button>
+          </div>
+        ) : (
+          <div className="mt-4 w-full flex items-center justify-center gap-2 px-3 py-2.5 border border-[#0D0D0D]/15 text-[10px] tracking-[0.25em] font-ui uppercase">
+            <span className="text-[#0D0D0D]/80">{meta.label}</span>
+            <span className="text-[#D4AF37]">·</span>
+            <span className="text-[#0D0D0D]/45">{meta.description}</span>
+          </div>
+        )}
       </div>
     </article>
   );

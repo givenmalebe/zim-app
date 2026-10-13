@@ -22,25 +22,27 @@ export default function OurStory({ onOpenStory }: { onOpenStory: () => void }) {
             className="font-display text-[#0D0D0D] text-5xl md:text-6xl lg:text-7xl leading-[0.95] mb-7"
             style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
           >
-            ROOTED IN A NATION
-            <br />
-            BUILT ON{" "}
-            <span className="text-[#D4AF37]">PASSION</span>
+            WHERE IT{" "}
+            <span className="text-[#D4AF37]">STARTED</span>
           </h2>
 
           <div className="space-y-5 text-[#444] text-[15px] leading-[1.75] font-body max-w-[520px]">
             <p>
               Throwback Jersey was born from a simple belief — that Zimbabwe&apos;s
-              sporting heritage deserves to be remembered, celebrated and worn
-              with pride. Every stitch carries the echoes of dusty township
-              pitches, of net-bulging finals, of generations that gave everything
-              for the badge.
+              sporting heritage deserves to be remembered, celebrated, and worn
+              with pride. We honour the legends, the teams, the moments, and the
+              fans who kept the dream alive.
             </p>
             <p>
-              We honour the legends, the teams, the moments, and the fans who
-              kept the dream alive. Every jersey tells a story. Every story
-              keeps the legacy going — stitched in green, gold, red and the
-              unbreakable black of a nation that refuses to be forgotten.
+              Every jersey tells a story. Every story keeps the legacy, a nation
+              that refuses to be forgotten.
+            </p>
+            <p>
+              Started in 2026, with one mission: to bring the unforgettable
+              moments of Zimbabwean sport back to life. From the Independence-era
+              cotton kits of the 1980s, through the bold 90s sublimations, to
+              the technical 2000s cuts — we recreate the jerseys that defined a
+              nation.
             </p>
           </div>
 

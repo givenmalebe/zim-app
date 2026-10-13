@@ -7,19 +7,19 @@ const contactInfo = [
   {
     icon: Icons.Heart,
     label: "Customer Care",
-    value: "hello@throwbackjersey.co.zw",
+    value: "info@throwbackjersey.co.zw",
     sub: "We reply within 24 hours",
   },
   {
     icon: Icons.Flag,
     label: "Visit Us",
-    value: "Plot 14, Glenara Avenue, Harare",
+    value: "Store location to be updated",
     sub: "Mon–Fri, 9am–5pm CAT",
   },
   {
     icon: Icons.Star,
     label: "Call Us",
-    value: "+263 242 700 202",
+    value: "+263 77 941 2515",
     sub: "Mon–Fri, 9am–5pm CAT",
   },
 ];
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "Are the jerseys authentic replicas?",
-    a: "Yes. Every jersey is a licensed Throwback Jersey recreation of an authentic Zimbabwe national team kit. Each carries the original team crest (ZIFA Bird, Zimbabwe Cricket lion, or Sables antelope).",
+    a: "Each jersey is a Throwback Jersey recreation of an authentic Zimbabwe national team kit. Releases happen once licensing is in place — every entry in the Archive shows its current licensing status.",
   },
   {
     q: "What is your return policy?",
@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: "How does my purchase help grassroots sport?",
-    a: "100% of profits stay in Zimbabwe and fund our grassroots academies, kit donations, and mentorship programs. Visit the Impact page to see where your money goes.",
+    a: "Every jersey helps build the Throwback Legacy Fund, which will fund grassroots academies, kit donations, and mentorship programs across Zimbabwe. We'll publish exactly how much goes where, and who receives it, before a single jersey ships.",
   },
 ];
 

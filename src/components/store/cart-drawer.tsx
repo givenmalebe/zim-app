@@ -138,7 +138,7 @@ export default function CartDrawer({
                           </button>
                         </div>
                         <span className="text-[#D4AF37] font-ui font-semibold text-sm">
-                          ${(it.price * it.qty).toFixed(0)}
+                          US${(it.price * it.qty).toFixed(0)}
                         </span>
                       </div>
                     </div>
@@ -153,16 +153,16 @@ export default function CartDrawer({
             <div className="border-t border-white/10 p-6 space-y-3">
               <div className="flex items-center justify-between text-white/60 text-xs font-ui tracking-[0.1em]">
                 <span>SUBTOTAL</span>
-                <span>${subtotal.toFixed(0)} USD</span>
+                <span>US${subtotal.toFixed(0)}</span>
               </div>
               <div className="flex items-center justify-between text-white/60 text-xs font-ui tracking-[0.1em]">
                 <span>SHIPPING</span>
-                <span>{shipping === 0 ? "Free" : `$${shipping} USD`}</span>
+                <span>{shipping === 0 ? "Free" : `US$${shipping}`}</span>
               </div>
               <div className="h-px bg-white/10" />
               <div className="flex items-center justify-between text-white text-base font-ui font-semibold">
                 <span className="tracking-[0.15em]">TOTAL</span>
-                <span className="text-[#D4AF37]">${total.toFixed(0)} USD</span>
+                <span className="text-[#D4AF37]">US${total.toFixed(0)}</span>
               </div>
               <button className="mt-3 w-full py-4 bg-[#D4AF37] text-[#0D0D0D] text-[11px] tracking-[0.3em] font-ui uppercase font-semibold hover:bg-white transition-colors flex items-center justify-center gap-3">
                 Checkout

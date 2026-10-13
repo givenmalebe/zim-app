@@ -6,7 +6,9 @@ import Hero from "@/components/store/hero";
 import Marquee from "@/components/store/marquee";
 import BannerStrip from "@/components/store/banner-strip";
 import OurStory from "@/components/store/our-story";
-import FeaturesBar from "@/components/store/features-bar";
+import ShirtThatRemembers from "@/components/store/shirt-that-remembers";
+import FlowerGeneration from "@/components/store/flower-generation";
+import WhyThrowback from "@/components/store/why-throwback";
 import Collection from "@/components/store/collection";
 import Legends from "@/components/store/legends";
 import Lookbook from "@/components/store/lookbook";
@@ -27,7 +29,7 @@ type PageKey = "OUR STORY" | "COLLECTIONS" | "LEGENDS" | "IMPACT" | "JOURNAL" | 
 
 const pageMeta: Record<Exclude<PageKey, null>, { eyebrow: string; title: string }> = {
   "OUR STORY": { eyebrow: "About the brand", title: "Our Story" },
-  "COLLECTIONS": { eyebrow: "Full catalog", title: "All Jerseys" },
+  "COLLECTIONS": { eyebrow: "The Archive", title: "Full Archive" },
   "LEGENDS": { eyebrow: "Hall of fame", title: "The Legends" },
   "IMPACT": { eyebrow: "Grassroots & community", title: "Our Impact" },
   "JOURNAL": { eyebrow: "Stories from the pitch", title: "The Journal" },
@@ -88,6 +90,23 @@ export default function Home() {
     }
   }, []);
 
+  // Footer link labels are title-cased ("Our Story"); normalize to page keys.
+  // Only open popout pages that actually exist — other links stay inert.
+  const handleFooterNav = useCallback((label: string) => {
+    const map: Record<string, PageKey | "COLLECTIONS"> = {
+      "our story": "OUR STORY",
+      "the archive": "OUR STORY",
+      legends: "LEGENDS",
+      "our impact": "IMPACT",
+      journal: "JOURNAL",
+      discover: "OUR STORY",
+    };
+    const key = map[label.trim().toLowerCase()];
+    if (!key) return彼此的;
+    if (key === "COLLECTIONS") setCatalogOpen(true);
+    else setPageOpen(key);
+  }, []);
+
   // Render the appropriate page content inside the page modal
   const renderPage = () => {
     if (!pageOpen) return null;
@@ -120,7 +139,9 @@ export default function Home() {
         <Marquee />
         <BannerStrip />
         <OurStory onOpenStory={() => setPageOpen("OUR STORY")} />
-        <FeaturesBar />
+        <ShirtThatRemembers />
+        <FlowerGeneration />
+        <WhyThrowback />
         <Collection
           onAddToCart={handleAdd}
           onViewAll={() => setCatalogOpen(true)}
@@ -130,7 +151,7 @@ export default function Home() {
         <Newsletter />
       </main>
 
-      <Footer />
+      <Footer onNavigate={handleFooterNav} />
 
       <CartDrawer
         open={cartOpen}

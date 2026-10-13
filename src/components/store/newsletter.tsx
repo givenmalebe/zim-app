@@ -7,7 +7,7 @@ const perks = [
   {
     icon: Icons.Truck,
     title: "Free Shipping",
-    sub: "On every order over $80 — nationwide.",
+    sub: "On every order over US$80 — nationwide.",
   },
   {
     icon: Icons.RefreshCcw,
@@ -66,7 +66,7 @@ export default function Newsletter() {
           <div className="inline-flex items-center gap-3 mb-5">
             <span className="h-px w-8 bg-[#D4AF37]" />
             <span className="text-[11px] tracking-[0.3em] text-[#D4AF37] font-ui uppercase">
-              Join the Legacy
+              The Legacy List
             </span>
             <span className="h-px w-8 bg-[#D4AF37]" />
           </div>
@@ -75,13 +75,17 @@ export default function Newsletter() {
             className="font-display text-white text-4xl md:text-5xl lg:text-6xl leading-[0.95] mb-5"
             style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
           >
-            BE PART OF THE STORY
+            JOIN THE{" "}
+            <span className="text-[#D4AF37]">LEGACY</span>
           </h2>
 
-          <p className="text-white/70 text-[15px] leading-[1.7] font-body mb-9 max-w-xl mx-auto">
-            Drop your email and be the first to hear about new drops, vintage
-            restorations, and stories from the legends who wore the badge before
-            you. No spam — only heritage.
+          <p className="text-white/70 text-[15px] leading-[1.7] font-body mb-4 max-w-xl mx-auto">
+            Be the first to know when the next piece of Zimbabwean sporting
+            history comes back to life.
+          </p>
+
+          <p className="text-[#D4AF37]/90 text-[10px] tracking-[0.25em] font-ui uppercase mb-9">
+            New drops · Archive discoveries · Player stories · Limited editions
           </p>
 
           <form
@@ -104,7 +108,7 @@ export default function Newsletter() {
                   : "bg-[#D4AF37] text-[#0D0D0D] hover:bg-white"
               }`}
             >
-              {done ? "Welcome to the family" : "Subscribe"}
+              {done ? "Welcome to the family" : "Join the Legacy"}
             </button>
           </form>
 

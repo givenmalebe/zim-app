@@ -33,20 +33,19 @@ export default function Collection({ onAddToCart, onViewAll }: Props) {
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-[#D4AF37]" />
               <span className="text-[11px] tracking-[0.3em] text-[#D4AF37] font-ui uppercase">
-                The Collection
+                The Archive
               </span>
             </div>
             <h2
               className="font-display text-[#0D0D0D] text-5xl md:text-6xl lg:text-7xl leading-[0.95]"
               style={{ fontFamily: "var(--font-bebas), Bebas Neue, sans-serif" }}
             >
-              WEAR THE LEGACY
+              THE ARCHIVE
             </h2>
             <p className="mt-5 max-w-md text-[#555] text-[15px] leading-[1.7] font-body">
-              Authentic Zimbabwe throwback jerseys across three codes — Warriors
-              football, Chevrons cricket and Sables rugby. Each jersey carries
-              its original team crest: the ZIFA Zimbabwe Bird, the Zimbabwe
-              Cricket lion, or the Sables antelope.
+              Jerseys we remember. Stories we&apos;re bringing back. Each entry
+              documents a piece of Zimbabwe&apos;s sporting heritage — and the
+              licensing work under way to release it.
             </p>
           </div>
         </div>
@@ -124,9 +123,9 @@ export default function Collection({ onAddToCart, onViewAll }: Props) {
         {/* Result count */}
         <div className="mb-6 flex items-center justify-between flex-wrap gap-3">
           <div className="text-[10px] tracking-[0.25em] text-[#0D0D0D]/50 font-ui uppercase">
-            Showing {homepagePreview.length} of {filtered.length} jerseys
+            Showing {homepagePreview.length} of {filtered.length} archive entries
             {hiddenCount > 0 && (
-              <span className="ml-2 text-[#D4AF37]">+{hiddenCount} more in catalog</span>
+              <span className="ml-2 text-[#D4AF37]">+{hiddenCount} more in the archive</span>
             )}
           </div>
         </div>
@@ -135,7 +134,7 @@ export default function Collection({ onAddToCart, onViewAll }: Props) {
         {homepagePreview.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-[#999] text-sm font-body">
-              No jerseys match your filters. Try a different combination.
+              No archive entries match your filters. Try a different combination.
             </p>
           </div>
         ) : (
@@ -152,7 +151,7 @@ export default function Collection({ onAddToCart, onViewAll }: Props) {
             onClick={onViewAll}
             className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-[#0D0D0D] text-[#0D0D0D] text-[11px] tracking-[0.3em] font-ui uppercase hover:bg-[#0D0D0D] hover:text-white transition-all duration-300"
           >
-            View All {products.length} Jerseys
+            View the Full Archive
             <Icons.ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
           </button>
         </div>

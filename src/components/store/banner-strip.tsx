@@ -18,7 +18,7 @@ export default function BannerStrip() {
       <div className="relative w-full border-y border-white/10">
         <img
           src="/images/banner-strip-reference.png"
-          alt="Heritage strip: vintage players, Great Zimbabwe ruins, throwback jersey close-up, and a crowd holding a sign that reads Zimbabwe Always A Nation Of Winners"
+          alt="Heritage strip: players, places, moments, jerseys, and people — the Throwback story in five words"
           className="block w-full h-auto object-cover"
         />
         {/* Dark gradient overlay to blend with surrounding sections */}
@@ -28,7 +28,7 @@ export default function BannerStrip() {
       {/* Bottom caption row */}
       <div className="text-center py-6">
         <p className="text-white/40 text-[10px] tracking-[0.3em] font-ui uppercase">
-          Players · Ruins · Craftsmanship · Crowds
+          Players · Places · Moments · Jerseys · People
         </p>
       </div>
     </section>

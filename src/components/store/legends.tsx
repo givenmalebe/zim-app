@@ -44,10 +44,10 @@ export default function Legends() {
             THOSE WHO WORE THE BADGE
           </h2>
           <p className="mt-5 max-w-2xl mx-auto text-[#555] text-[15px] leading-[1.7] font-body">
-            We don&apos;t just sell jerseys — we tell the stories of the men who
-            ran, bled, and lifted a nation while wearing them. From the dusty
-            football pitches of Bulawayo to the cricket grounds of Harare Sports
-            Club, every Throwback is a chapter in their book.
+            We don&apos;t just sell jerseys — we tell the stories of the
+            sportsmen who ran, bled, and lifted a nation while wearing them.
+            From football pitches, cricket grounds and rugby fields, every
+            Throwback is a chapter in their book.
           </p>
         </div>
 
@@ -86,7 +86,7 @@ export default function Legends() {
 
         {/* Note about photos */}
         <p className="mt-12 text-center text-[#999] text-[10px] tracking-[0.2em] font-ui uppercase">
-          6 of 8 legend cards use real photographs from Wikimedia Commons · Peter Ndlovu &amp; Moses Chunga use AI-generated artistic representations (no freely-licensed photos available) · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
+          8 of 10 legend cards use real photographs · Peter Ndlovu &amp; Moses Chunga use AI-generated artistic representations (no freely-licensed photos available) · Career facts sourced from Wikipedia, Cricbuzz, ESPN Cricinfo, Liverpool FC, Transfermarkt &amp; Pindula
         </p>
       </div>
     </section>
@@ -123,6 +123,7 @@ function LegendCard({ legend, index }: { legend: Legend; index: number }) {
           src={legend.image}
           alt={`Portrait of ${legend.name} — ${legend.role}`}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          style={legend.imagePosition ? { objectPosition: legend.imagePosition } : undefined}
         />
         {/* Subtle dark overlay at bottom for portrait legibility */}
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent" />
@@ -166,10 +167,6 @@ function LegendCard({ legend, index }: { legend: Legend; index: number }) {
         <p className="text-[10px] tracking-[0.2em] text-[#999] font-ui uppercase mb-3">
           {legend.role}
         </p>
-
-        <blockquote className="text-[#444] text-[14px] leading-[1.6] font-body italic relative pl-4 border-l-2 border-[#D4AF37]/40">
-          &ldquo;{legend.quote}&rdquo;
-        </blockquote>
 
         {/* Career highlights list */}
         <ul className="mt-4 space-y-1.5">
