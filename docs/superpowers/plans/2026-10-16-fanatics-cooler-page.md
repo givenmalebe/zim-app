@@ -544,17 +544,25 @@ cmd /c "npx next build" 2>&1 | Select-Object -Last 12
 ```
 Expected: build completes, routes table shows `/` and `/_not-found` as static. No errors.
 
-- [ ] **Step 8: Verify the nav label and all 7 image paths are in the generated HTML**
+- [ ] **Step 8: Verify the nav label is in the HTML and the image paths are in a JS chunk**
+
+`PageModal` returns `null` while closed (`page-modal.tsx:26`), so modal-gated page content is NOT prerendered into `index.html`. It is bundled into a client chunk and mounted when the user clicks the nav item. Assert the label in the HTML and the paths in the chunks.
 
 Run:
 ```powershell
 $html = Get-Content -Raw "out\index.html"
-"FANATICS COOLER label : " + ($html -match 'FANATICS COOLER')
-foreach ($n in 'dream-team-fanatics-green','zimbabwe-dream-team','dream-team-bottle','zim-cricket-fanatic','caps-united-fanatics','highlanders-fc-100-years','collection-lineup') {
-  "/images/cooler/$n.png : " + ($html -match [regex]::Escape("/images/cooler/$n.png"))
+"label in html : " + ($html -match 'FANATICS COOLER')
+
+$names = 'dream-team-fanatics-green','zimbabwe-dream-team','dream-team-bottle',
+         'zim-cricket-fanatic','caps-united-fanatics','highlanders-fc-100-years',
+         'collection-lineup'
+foreach ($n in $names) {
+  $hit = Get-ChildItem -Recurse -Filter "*.js" "out\_next" |
+    Select-String -SimpleMatch "/images/cooler/$n.png" -List
+  "{0,-30} {1}" -f $n, [bool]$hit
 }
 ```
-Expected: all eight lines `True`.
+Expected: `label in html : True`, then all seven names reporting `True`. A name reporting `False` means the component did not make it into the client bundle.
 
 - [ ] **Step 9: Verify mix-blend-multiply made it into the CSS**
 

@@ -22,14 +22,16 @@ import ImpactPage from "@/components/store/pages/impact-page";
 import JournalPage from "@/components/store/pages/journal-page";
 import ContactPage from "@/components/store/pages/contact-page";
 import LegendsPage from "@/components/store/pages/legends-page";
+import FanaticsCoolerPage from "@/components/store/pages/fanatics-cooler-page";
 import type { Product } from "@/lib/products";
 import { useToast } from "@/hooks/use-toast";
 
-type PageKey = "OUR STORY" | "COLLECTIONS" | "LEGENDS" | "IMPACT" | "JOURNAL" | "CONTACT" | null;
+type PageKey = "OUR STORY" | "COLLECTIONS" | "FANATICS COOLER" | "LEGENDS" | "IMPACT" | "JOURNAL" | "CONTACT" | null;
 
 const pageMeta: Record<Exclude<PageKey, null>, { eyebrow: string; title: string }> = {
   "OUR STORY": { eyebrow: "About the brand", title: "Our Story" },
   "COLLECTIONS": { eyebrow: "The Archive", title: "Full Archive" },
+  "FANATICS COOLER": { eyebrow: "Cooler Corner", title: "Fanatics Cooler" },
   "LEGENDS": { eyebrow: "Hall of fame", title: "The Legends" },
   "IMPACT": { eyebrow: "Grassroots & community", title: "Our Impact" },
   "JOURNAL": { eyebrow: "Stories from the pitch", title: "The Journal" },
@@ -121,6 +123,8 @@ export default function Home() {
         return <JournalPage />;
       case "CONTACT":
         return <ContactPage />;
+      case "FANATICS COOLER":
+        return <FanaticsCoolerPage />;
       default:
         return null;
     }
