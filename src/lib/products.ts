@@ -238,6 +238,7 @@ export const navItems = [
   "HOME",
   "OUR STORY",
   "COLLECTIONS",
+  "FANATICS COOLER",
   "LEGENDS",
   "IMPACT",
   "JOURNAL",
