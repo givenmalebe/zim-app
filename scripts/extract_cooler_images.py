@@ -10,7 +10,7 @@ import sys
 
 from pptx import Presentation
 
-SOURCE = "public/Cooler Corner - Copy.pptx"
+SOURCE = "assets/decks/Cooler Corner.pptx"
 DEST = "public/images/cooler"
 
 # slide number -> output filename, in shape order within that slide

@@ -81,7 +81,7 @@ export default function Lookbook() {
         </div>
 
         {/* Featured image */}
-        <div className="relative mb-6 group overflow-hidden bg-[#0D0D0D]">
+        <div className="hidden md:block relative mb-6 group overflow-hidden bg-[#0D0D0D]">
           <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
             <img
               src={hero.src}

@@ -55,3 +55,9 @@ prompt
 server.log
 # Skills directory
 /skills/
+
+# Internal source decks - never commit or ship these.
+/assets/decks/
+# Microsoft Office lock files
+~$*
+~$*.*
